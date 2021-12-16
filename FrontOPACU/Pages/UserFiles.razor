@@ -1,0 +1,88 @@
+@page "/user-files"
+@using Microsoft.AspNetCore.WebUtilities
+@inject NavigationManager navigationManager
+@inject HttpClient Http
+
+<h3>Файлы пользователя @nameParse</h3>
+
+
+
+@if (allUserFiles == null)
+{
+    <p><em>Загрузка...</em></p>
+}
+else
+{
+    @if (allUserFiles.Count > 0)
+    {
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var user in allUserFiles)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Title</td>
+                    <td>@user.Description</td>
+                    <td>@user.Format</td>
+                    <td>@user.Size</td>
+                    <td><img src="http://localhost:5000/@user.Path" width="100px"/></td>
+                    <td>@user.CreatedAt</td>
+                    <td>@user.UpdatedAt</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h1>Вы еще не загрузили файлы</h1>
+    }
+}
+
+@code {
+    public string idPars;
+    public string nameParse;
+    private List<File> allUserFiles;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        
+        var uri = navigationManager.ToAbsoluteUri(navigationManager.Uri);
+        
+        if(QueryHelpers.ParseQuery(uri.Query).TryGetValue("id", out var id))
+        {
+             idPars = id.First();
+        }
+
+        if(QueryHelpers.ParseQuery(uri.Query).TryGetValue("name", out var name))
+        {
+            nameParse = name.First();
+        }
+        
+        string url = "http://localhost:5000/api/users/" + idPars + "/files";
+        
+        allUserFiles = await Http.GetFromJsonAsync<List<File>>(url);
+    }
+        
+    public class File
+    {
+        public Guid Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Format { get; set; }
+        public float Size { get; set; }
+        public string Path { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public Guid UserId{ get; set; }
+        public virtual Users.User User { get; set; }
+    }
+
+}

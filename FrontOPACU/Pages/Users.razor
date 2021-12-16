@@ -1,0 +1,57 @@
+﻿@page "/users"
+@inject HttpClient Http
+
+<h1>Пользователи</h1>
+
+<p>Это все пользователи сервиса</p>
+
+@if (allUsers == null)
+{
+    <p><em>Загрузка...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th/>
+                <th/>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in allUsers)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>
+                        <a href="/user-files?id=@user.Id.ToString()&name=@user.FirstName"><span class="oi oi-file"></span></a>
+                    </td>
+                    <td><span class="oi oi-delete"></span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<User> allUsers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        allUsers = await Http.GetFromJsonAsync<List<User>>("http://localhost:5000/api/User");
+    }
+
+    public class User
+    {
+        public Guid Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+    }
+    
+    
+}
