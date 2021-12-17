@@ -5,8 +5,6 @@
 
 <h3>Файлы пользователя @nameParse</h3>
 
-
-
 @if (allUserFiles == null)
 {
     <p><em>Загрузка...</em></p>
@@ -66,7 +64,7 @@ else
             nameParse = name.First();
         }
         
-        string url = "http://localhost:5000/api/users/" + idPars + "/files";
+        string url = $"{Program.apiURL}users/" + idPars + "/files";
         
         allUserFiles = await Http.GetFromJsonAsync<List<File>>(url);
     }

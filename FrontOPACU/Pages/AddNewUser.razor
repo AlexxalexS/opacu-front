@@ -1,0 +1,65 @@
+@page "/add-new-user"
+@using System.Text
+@inject HttpClient Http
+@using Newtonsoft.Json;
+
+<h3>Добавиление нового пользовтеля</h3>
+
+<EditForm Model="@newUser" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    
+    <label>
+        Введите имя:
+        <InputText class="input-group-text" id="firstName" @bind-Value="newUser.FirstName"/>
+    </label>
+    <br/>
+    <label>
+        Введите фамилию:
+        <InputText class="input-group-text" id="lastName" @bind-Value="newUser.LastName"/>
+    </label>
+    <br/>
+    <br/>
+    <button class="btn btn-primary" type="submit">Создать</button>
+</EditForm>
+
+<br/>
+
+@if (isCreate)
+{
+    <h1 class="alert-success">Пользователь создан</h1>
+}
+
+
+
+@code {
+
+    private NewUser newUser = new();
+    private Boolean isCreate = false;
+
+    private async Task HandleValidSubmit()
+    {
+        var serialized = JsonConvert.SerializeObject(newUser);
+        var stringContent = new StringContent(serialized, Encoding.UTF8, "application/json");
+        var result = await Http.PostAsync($"{Program.apiURL}User", stringContent).ConfigureAwait(false);
+
+        try
+        {
+            isCreate = true;
+            newUser = new();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+
+    }
+    
+    public class NewUser
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+    }
+
+    
+}

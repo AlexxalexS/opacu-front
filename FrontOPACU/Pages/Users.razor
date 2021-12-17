@@ -5,6 +5,13 @@
 
 <p>Это все пользователи сервиса</p>
 
+<a class="nav-link" href="add-new-user">
+   <span class="oi oi-plus" aria-hidden="true"></span>Добавить нового ользователя
+</a>
+
+<br/>
+<hr/>
+
 @if (allUsers == null)
 {
     <p><em>Загрузка...</em></p>
@@ -43,7 +50,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        allUsers = await Http.GetFromJsonAsync<List<User>>("http://localhost:5000/api/User");
+        allUsers = await Http.GetFromJsonAsync<List<User>>("https://localhost:5000/api/User");
     }
 
     public class User

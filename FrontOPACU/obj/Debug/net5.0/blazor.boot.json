@@ -31,6 +31,7 @@
       "Microsoft.JSInterop.dll": "sha256-2U21ELz08tKryAM9mMlyuFaZZyvZAS03M1ZyL\/T\/YyA=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-yqSzPJFI4ilEEeghuXNKtT9syg7UPckEK7mF53UyxM4=",
       "Microsoft.Net.Http.Headers.dll": "sha256-P66ftDrXwc6ayND8uYzIk0CPQy1GjNZAPHx9RMhi3V4=",
+      "Newtonsoft.Json.dll": "sha256-cs8pHUurDt0IqbB8YXPh560au3q3J\/1wRL9jBddRVmE=",
       "System.IO.Pipelines.dll": "sha256-3ET+mpR7F058YRj9YaLHOVXBqOW6iUxtIpeiKPYw4PA=",
       "Microsoft.CSharp.dll": "sha256-J3xEnfK9Stuxsk3ysfAkwm7tlSZzs8rytHhodu+3aA0=",
       "Microsoft.VisualBasic.Core.dll": "sha256-6gJT+FVMmaF5o4CyPAnHcWjWVtFMSdJke\/+1seKS1Y0=",
@@ -197,11 +198,11 @@
       "mscorlib.dll": "sha256-heWnofXFSc\/TfAxrWpjQxeuS+nlIOs9YycfI2QGXGM8=",
       "netstandard.dll": "sha256-mbIVAluJ7cAx0vUQshB\/c1zEIK5JcYwIYxo\/BQ\/meRU=",
       "System.Private.CoreLib.dll": "sha256-FrZbEyy47f3RDuj77R5oHUGxSGEDgRRxykTjImrLqfM=",
-      "FrontOPACU.dll": "sha256-onOVZo\/9kGgB+DjyTzWKog66DTrVq2Jq0swGyF7WNNU="
+      "FrontOPACU.dll": "sha256-I3Ar\/WLT4YtWwah+vn4hTZNytCf5WMSLNYd7FuJGklk="
     },
     "lazyAssembly": null,
     "pdb": {
-      "FrontOPACU.pdb": "sha256-3Chr\/7RhBzcGCc66+OgYjJ1edO3yusG9NA4Jhinb+Us="
+      "FrontOPACU.pdb": "sha256-oi\/Wm6o155oYpe5iz8+yUwn6XvOQMuxG0O4oh\/PPfTk="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-5ttRwTa4Rar530elwLdfGDeH9I9NX9MPyDl6zLi9uug=",

@@ -314,6 +314,15 @@
           "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll": {}
         }
       },
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "System.Buffers/4.5.0": {
         "type": "package",
         "compile": {
@@ -662,6 +671,15 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
       "System.Buffers/4.5.0": {
@@ -1202,6 +1220,33 @@
         "microsoft.net.http.headers.nuspec"
       ]
     },
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "System.Buffers/4.5.0": {
       "sha512": "pL2ChpaRRWI/p4LXyy4RgeWlYF2sgfj/pnVMvBqwNFr5cXg7CXNnWZWxrOONLg8VGdFB8oB+EG2Qw4MLgTOe+A==",
       "type": "package",
@@ -1304,6 +1349,7 @@
       "Microsoft.AspNetCore.Components.WebAssembly >= 5.0.11",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 5.0.11",
       "Microsoft.AspNetCore.WebUtilities >= 2.2.0",
+      "Newtonsoft.Json >= 13.0.1",
       "System.Net.Http.Json >= 5.0.0"
     ]
   },
@@ -1313,11 +1359,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/alexey/Projects/FrontOPACU/opacu-front/FrontOPACU/FrontOPACU.csproj",
+      "projectUniqueName": "/Users/alexey/Projects/opacu-front/FrontOPACU/FrontOPACU.csproj",
       "projectName": "FrontOPACU",
-      "projectPath": "/Users/alexey/Projects/FrontOPACU/opacu-front/FrontOPACU/FrontOPACU.csproj",
+      "projectPath": "/Users/alexey/Projects/opacu-front/FrontOPACU/FrontOPACU.csproj",
       "packagesPath": "/Users/alexey/.nuget/packages/",
-      "outputPath": "/Users/alexey/Projects/FrontOPACU/opacu-front/FrontOPACU/obj/",
+      "outputPath": "/Users/alexey/Projects/opacu-front/FrontOPACU/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/alexey/.nuget/NuGet/NuGet.Config"
@@ -1356,6 +1402,10 @@
           "Microsoft.AspNetCore.WebUtilities": {
             "target": "Package",
             "version": "[2.2.0, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.1, )"
           },
           "System.Net.Http.Json": {
             "target": "Package",
