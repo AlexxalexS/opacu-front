@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/alexey/Projects/FrontOPACU/FrontOPACU/FrontOPACU.csproj": {}
+    "/Users/alexey/Projects/FrontOPACU/opacu-front/FrontOPACU/FrontOPACU.csproj": {}
   },
   "projects": {
-    "/Users/alexey/Projects/FrontOPACU/FrontOPACU/FrontOPACU.csproj": {
+    "/Users/alexey/Projects/FrontOPACU/opacu-front/FrontOPACU/FrontOPACU.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/alexey/Projects/FrontOPACU/FrontOPACU/FrontOPACU.csproj",
+        "projectUniqueName": "/Users/alexey/Projects/FrontOPACU/opacu-front/FrontOPACU/FrontOPACU.csproj",
         "projectName": "FrontOPACU",
-        "projectPath": "/Users/alexey/Projects/FrontOPACU/FrontOPACU/FrontOPACU.csproj",
+        "projectPath": "/Users/alexey/Projects/FrontOPACU/opacu-front/FrontOPACU/FrontOPACU.csproj",
         "packagesPath": "/Users/alexey/.nuget/packages/",
-        "outputPath": "/Users/alexey/Projects/FrontOPACU/FrontOPACU/obj/",
+        "outputPath": "/Users/alexey/Projects/FrontOPACU/opacu-front/FrontOPACU/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/alexey/.nuget/NuGet/NuGet.Config"

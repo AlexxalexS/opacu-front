@@ -1,4 +1,4 @@
 ﻿<StaticWebAssets Version="1.0">
-  <ContentRoot BasePath="/" Path="/Users/alexey/Projects/FrontOPACU/FrontOPACU/bin/Debug/net5.0/wwwroot/" />
-  <ContentRoot BasePath="/" Path="/Users/alexey/Projects/FrontOPACU/FrontOPACU/obj/Debug/net5.0/scopedcss/bundle/" />
+  <ContentRoot BasePath="/" Path="/Users/alexey/Projects/FrontOPACU/opacu-front/FrontOPACU/bin/Debug/net5.0/wwwroot/" />
+  <ContentRoot BasePath="/" Path="/Users/alexey/Projects/FrontOPACU/opacu-front/FrontOPACU/obj/Debug/net5.0/scopedcss/bundle/" />
 </StaticWebAssets>

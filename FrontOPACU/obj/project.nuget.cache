@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ce9cEIFpZgN/xSkkmecOutidFP1+cSiljmCdMSPkSS/AseVruGR/DmmyRfWj4YFmAkwzzFzx5xdnULGERaoonQ==",
+  "dgSpecHash": "66BYR54DnuromnqkPGPWjdenGwFhFp4Nbatp1/0o3L9diV5TS3/hhbAt/RkDXVU6HnMjXRYzcnTXH+L6zos48Q==",
   "success": true,
-  "projectFilePath": "/Users/alexey/Projects/FrontOPACU/FrontOPACU/FrontOPACU.csproj",
+  "projectFilePath": "/Users/alexey/Projects/FrontOPACU/opacu-front/FrontOPACU/FrontOPACU.csproj",
   "expectedPackageFiles": [
     "/Users/alexey/.nuget/packages/microsoft.aspnetcore.authorization/5.0.11/microsoft.aspnetcore.authorization.5.0.11.nupkg.sha512",
     "/Users/alexey/.nuget/packages/microsoft.aspnetcore.components/5.0.11/microsoft.aspnetcore.components.5.0.11.nupkg.sha512",

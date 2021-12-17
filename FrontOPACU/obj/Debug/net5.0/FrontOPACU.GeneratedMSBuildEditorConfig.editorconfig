@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = FrontOPACU
-build_property.ProjectDir = /Users/alexey/Projects/FrontOPACU/FrontOPACU/
+build_property.ProjectDir = /Users/alexey/Projects/FrontOPACU/opacu-front/FrontOPACU/
