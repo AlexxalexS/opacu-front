@@ -10,6 +10,7 @@
 </a>
 
 <br/>
+
 <hr/>
 
 @if (allUsers == null)
@@ -38,7 +39,9 @@ else
                     <td>
                         <a href="/user-files?id=@user.Id.ToString()&name=@user.FirstName"><span class="oi oi-file"></span></a>
                     </td>
-                    <td><span class="oi oi-delete"></span></td>
+                    <td>
+                        <a href="/add-new-file?id=@user.Id.ToString()"><span class="oi oi-data-transfer-download"></span></a>
+                    </td>
                 </tr>
             }
         </tbody>

@@ -1,0 +1,173 @@
+@page "/add-new-file"
+@using Microsoft.AspNetCore.WebUtilities
+@inject NavigationManager navigationManager
+@using System.Linq
+@using System.Net.Http.Headers
+@inject HttpClient Http
+
+<h1>Upload Files</h1>
+
+<p>
+<EditForm Model="@newFile"  OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <label>
+        Введите имя файла:
+        <InputText class="input-group-text" id="title" @bind-Value="newFile.Title"/>
+    </label>
+    <br/>
+    <label>
+        Введите описание файла файла:
+        <InputText class="input-group-text" id="description" @bind-Value="newFile.Description"/>
+    </label>
+    <br/>
+    <label>
+        Upload up to iles:
+        <InputFile OnChange="@OnInputFileChange" multiple/>
+    </label>
+    <br/>
+    <br/>
+    <button class="btn btn-primary" type="submit">Создать</button>
+</EditForm>
+</p>
+
+@if (files.Count > 0)
+{
+    <div class="card">
+        <div class="card-body">
+            <ul>
+                @foreach (var file in files)
+                {
+                    <li>
+                        File: @file.Name
+                        <br>
+                        @if (FileUpload(uploadResults, file.Name,
+                           out var result))
+                        {
+                            <span>
+                                Stored File Name: @result.StoredFileName
+                            </span>
+                        }
+                        else
+                        {
+                            <span>
+                                There was an error uploading the file
+                                (Error: @result.ErrorCode).
+                            </span>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+
+@code {
+    private string idUser;
+    private List<File> files = new();
+    private List<UploadResult> uploadResults = new();
+    private int maxAllowedFiles = 3;
+    private bool shouldRender;
+    private FileUploadModel newFile = new();
+    
+    private MultipartFormDataContent content = new MultipartFormDataContent();
+    private bool upload = false;
+
+    protected override bool ShouldRender() => shouldRender;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var uri = navigationManager.ToAbsoluteUri(navigationManager.Uri);
+
+        if(QueryHelpers.ParseQuery(uri.Query).TryGetValue("id", out var id))
+        {
+            idUser = id.First();
+        }
+    }
+
+    private async Task OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        shouldRender = false;
+        upload = false;
+
+        foreach (var file in e.GetMultipleFiles(maxAllowedFiles))
+        {
+            if (uploadResults.SingleOrDefault(
+                f => f.FileName == file.Name) is null)
+            {
+                try
+                {
+                    var fileContent =
+                        new StreamContent(file.OpenReadStream());
+
+                    fileContent.Headers.ContentType =
+                        new MediaTypeHeaderValue(file.ContentType);
+
+                    files.Add(new() { Name = file.Name });
+
+                    content.Add(
+                        content: fileContent,
+                        name: "\"file\"",
+                        fileName: file.Name);
+
+                    
+
+
+                    upload = true;
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+
+        shouldRender = true;
+        
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        content.Add(new StringContent(newFile.Title), "title");
+        content.Add(new StringContent(newFile.Description), "description");
+        
+        if (upload)
+        {
+            var response = await Http.PostAsync($"{Program.apiURL}/users/" + idUser + "/files", content).ConfigureAwait(false);
+        }
+        
+    }
+
+    private static bool FileUpload(IList<UploadResult> uploadResults,
+        string? fileName, out UploadResult result)
+    {
+        result = uploadResults.SingleOrDefault(f => f.FileName == fileName) ?? new();
+
+        if (!result.Uploaded)
+        {
+        }
+
+        return result.Uploaded;
+    }
+
+    private class File
+    {
+        public string? Name { get; set; }
+    }
+
+    public class UploadResult
+    {
+        public bool Uploaded { get; set; }
+        public string FileName { get; set; }
+        public string StoredFileName { get; set; }
+        public int ErrorCode { get; set; }
+    }
+
+    private class FileUploadModel
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+    }
+
+}

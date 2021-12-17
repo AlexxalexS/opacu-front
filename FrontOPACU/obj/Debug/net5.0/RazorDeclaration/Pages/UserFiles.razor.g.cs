@@ -100,8 +100,8 @@ using Microsoft.AspNetCore.WebUtilities;
 #nullable restore
 #line 47 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UserFiles.razor"
        
-    public string idPars;
-    public string nameParse;
+    private string idPars;
+    private string nameParse;
     private List<File> allUserFiles;
     
     protected override async Task OnInitializedAsync()
@@ -119,7 +119,7 @@ using Microsoft.AspNetCore.WebUtilities;
             nameParse = name.First();
         }
         
-        string url = $"{Program.apiURL}users/" + idPars + "/files";
+        string url = $"{Program.apiURL}/users/" + idPars + "/files";
         
         allUserFiles = await Http.GetFromJsonAsync<List<File>>(url);
     }

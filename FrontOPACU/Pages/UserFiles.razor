@@ -30,7 +30,7 @@ else
                     <td>@user.Description</td>
                     <td>@user.Format</td>
                     <td>@user.Size</td>
-                    <td><img src="http://localhost:5000/@user.Path" width="100px"/></td>
+                    <td><img src="https://localhost:5000/@user.Path" width="100px"/></td>
                     <td>@user.CreatedAt</td>
                     <td>@user.UpdatedAt</td>
                 </tr>
@@ -45,8 +45,8 @@ else
 }
 
 @code {
-    public string idPars;
-    public string nameParse;
+    private string idPars;
+    private string nameParse;
     private List<File> allUserFiles;
     
     protected override async Task OnInitializedAsync()
@@ -64,7 +64,7 @@ else
             nameParse = name.First();
         }
         
-        string url = $"{Program.apiURL}users/" + idPars + "/files";
+        string url = $"{Program.apiURL}/users/" + idPars + "/files";
         
         allUserFiles = await Http.GetFromJsonAsync<List<File>>(url);
     }

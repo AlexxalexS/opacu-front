@@ -12,7 +12,7 @@ namespace FrontOPACU
 {
     public class Program
     {
-        public static string apiURL = "https://localhost:5000/api/";
+        public static string apiURL = "https://localhost:5000/api";
         public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);

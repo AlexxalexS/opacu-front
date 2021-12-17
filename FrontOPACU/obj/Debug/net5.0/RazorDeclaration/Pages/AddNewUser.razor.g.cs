@@ -115,7 +115,7 @@ using Newtonsoft.Json;
     {
         var serialized = JsonConvert.SerializeObject(newUser);
         var stringContent = new StringContent(serialized, Encoding.UTF8, "application/json");
-        var result = await Http.PostAsync($"{Program.apiURL}User", stringContent).ConfigureAwait(false);
+        var result = await Http.PostAsync($"{Program.apiURL}/User", stringContent).ConfigureAwait(false);
 
         try
         {
@@ -129,7 +129,7 @@ using Newtonsoft.Json;
 
     }
     
-    public class NewUser
+    private class NewUser
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
