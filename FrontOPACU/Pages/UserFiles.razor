@@ -5,6 +5,10 @@
 
 <h3>Файлы пользователя @nameParse</h3>
 
+<audio id="sound" src="/media/alert.wav" />
+
+<button onclick="document.getElementById('sound').play()">Play through Javascript</button>
+
 @if (allUserFiles == null)
 {
     <p><em>Загрузка...</em></p>

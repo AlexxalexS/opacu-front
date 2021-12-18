@@ -3,7 +3,9 @@
 @inject NavigationManager navigationManager
 @using System.Linq
 @using System.Net.Http.Headers
+@using Microsoft.Extensions.Logging
 @inject HttpClient Http
+@inject ILogger<UploadFile> Logger
 
 <h1>Upload Files</h1>
 
@@ -23,7 +25,7 @@
     </label>
     <br/>
     <label>
-        Upload up to iles:
+        Загрузите файл:
         <InputFile OnChange="@OnInputFileChange" multiple/>
     </label>
     <br/>
@@ -88,6 +90,8 @@
 
     private async Task OnInputFileChange(InputFileChangeEventArgs e)
     {
+        long maxFileSize = 1024 * 1024 * 100;
+        
         shouldRender = false;
         upload = false;
 
@@ -98,11 +102,9 @@
             {
                 try
                 {
-                    var fileContent =
-                        new StreamContent(file.OpenReadStream());
+                    var fileContent = new StreamContent(file.OpenReadStream(maxFileSize));
 
-                    fileContent.Headers.ContentType =
-                        new MediaTypeHeaderValue(file.ContentType);
+                    fileContent.Headers.ContentType = new MediaTypeHeaderValue(file.ContentType);
 
                     files.Add(new() { Name = file.Name });
 
@@ -110,15 +112,15 @@
                         content: fileContent,
                         name: "\"file\"",
                         fileName: file.Name);
-
                     
-
-
                     upload = true;
+                    
                 }
                 catch (Exception ex)
                 {
-
+                    Logger.LogInformation(
+                        "{FileName} not uploaded (Err: 6): {Message}", 
+                        file.Name, ex.Message);
                 }
             }
         }
@@ -131,7 +133,7 @@
     {
         content.Add(new StringContent(newFile.Title), "title");
         content.Add(new StringContent(newFile.Description), "description");
-        
+
         if (upload)
         {
             var response = await Http.PostAsync($"{Program.apiURL}/users/" + idUser + "/files", content).ConfigureAwait(false);
@@ -139,8 +141,7 @@
         
     }
 
-    private static bool FileUpload(IList<UploadResult> uploadResults,
-        string? fileName, out UploadResult result)
+    private static bool FileUpload(IList<UploadResult> uploadResults, string? fileName, out UploadResult result)
     {
         result = uploadResults.SingleOrDefault(f => f.FileName == fileName) ?? new();
 

@@ -82,28 +82,35 @@ using FrontOPACU.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/NewUploadfile.razor"
+#line 2 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UploadFile.razor"
 using Microsoft.AspNetCore.WebUtilities;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/NewUploadfile.razor"
+#line 4 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UploadFile.razor"
 using System.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/NewUploadfile.razor"
+#line 5 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UploadFile.razor"
 using System.Net.Http.Headers;
 
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UploadFile.razor"
+using Microsoft.Extensions.Logging;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/add-new-file")]
-    public partial class NewUploadfile : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class UploadFile : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -111,7 +118,7 @@ using System.Net.Http.Headers;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 66 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/NewUploadfile.razor"
+#line 68 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UploadFile.razor"
        
     private string idUser;
     private List<File> files = new();
@@ -137,6 +144,8 @@ using System.Net.Http.Headers;
 
     private async Task OnInputFileChange(InputFileChangeEventArgs e)
     {
+        long maxFileSize = 1024 * 1024 * 100;
+        
         shouldRender = false;
         upload = false;
 
@@ -147,11 +156,9 @@ using System.Net.Http.Headers;
             {
                 try
                 {
-                    var fileContent =
-                        new StreamContent(file.OpenReadStream());
+                    var fileContent = new StreamContent(file.OpenReadStream(maxFileSize));
 
-                    fileContent.Headers.ContentType =
-                        new MediaTypeHeaderValue(file.ContentType);
+                    fileContent.Headers.ContentType = new MediaTypeHeaderValue(file.ContentType);
 
                     files.Add(new() { Name = file.Name });
 
@@ -159,15 +166,15 @@ using System.Net.Http.Headers;
                         content: fileContent,
                         name: "\"file\"",
                         fileName: file.Name);
-
                     
-
-
                     upload = true;
+                    
                 }
                 catch (Exception ex)
                 {
-
+                    Logger.LogInformation(
+                        "{FileName} not uploaded (Err: 6): {Message}", 
+                        file.Name, ex.Message);
                 }
             }
         }
@@ -180,7 +187,7 @@ using System.Net.Http.Headers;
     {
         content.Add(new StringContent(newFile.Title), "title");
         content.Add(new StringContent(newFile.Description), "description");
-        
+
         if (upload)
         {
             var response = await Http.PostAsync($"{Program.apiURL}/users/" + idUser + "/files", content).ConfigureAwait(false);
@@ -188,8 +195,7 @@ using System.Net.Http.Headers;
         
     }
 
-    private static bool FileUpload(IList<UploadResult> uploadResults,
-        string? fileName, out UploadResult result)
+    private static bool FileUpload(IList<UploadResult> uploadResults, string? fileName, out UploadResult result)
     {
         result = uploadResults.SingleOrDefault(f => f.FileName == fileName) ?? new();
 
@@ -223,6 +229,7 @@ using System.Net.Http.Headers;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ILogger<UploadFile> Logger { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
     }
