@@ -3,6 +3,11 @@
 @inject NavigationManager navigationManager
 @inject HttpClient Http
 
+<a href="/user-files?id=@idPars">
+    <BSButton Size="Size.Small" Color="Color.Primary"><span class="oi oi-arrow-thick-left"></span>Назад</BSButton>
+</a>
+<br>
+
 <h3>Файлы пользователя @nameParse</h3>
 
 @if (textFiles == null)

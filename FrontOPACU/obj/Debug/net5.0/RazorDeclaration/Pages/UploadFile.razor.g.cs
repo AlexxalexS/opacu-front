@@ -125,7 +125,7 @@ using Microsoft.Extensions.Logging;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 68 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UploadFile.razor"
+#line 72 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UploadFile.razor"
        
     private string idUser;
     private List<File> files = new();

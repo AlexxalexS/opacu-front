@@ -119,7 +119,7 @@ using Blazored.Video.Support;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 62 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/VidesFiles.razor"
+#line 66 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/VidesFiles.razor"
        
     private string idPars;
     private string nameParse;

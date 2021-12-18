@@ -3,14 +3,11 @@
 @inject NavigationManager navigationManager
 @inject HttpClient Http
 
+<a href="/users">
+    <BSButton Size="Size.Small" Color="Color.Primary"><span class="oi oi-arrow-thick-left"></span>Назад</BSButton>
+</a>
+
 <h3>Файлы пользователя @nameParse</h3>
-
-@* <audio id="sound" src="https://localhost:5000/static/audio/2471b78c-dba8-4270-bd9f-98287926e755__Maneskin - I Wanna Be Your Slave.mp3" /> *@
-@* *@
-@* <button onclick="document.getElementById('sound').play()">Play</button> *@
-@* <button onclick="document.getElementById('sound').pause()">Pause</button> *@
-
-
 
 <a href="/music?id=@idPars&name=@nameParse">
     <BSButton Color="Color.Primary">Музыка</BSButton> |
