@@ -1,0 +1,91 @@
+@page "/music"
+@using Microsoft.AspNetCore.WebUtilities
+@inject NavigationManager navigationManager
+@inject HttpClient Http
+
+<h3>Музыка пользователя @nameParse</h3>
+
+@if (musicFiles == null)
+{
+<p><em>Загрузка...</em></p>
+}
+else
+{
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Bitrate</th>
+        <th>Length</th>
+        
+        <th><th/>
+        <th/>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var sound in musicFiles)
+    {
+       
+        <audio id="sound+@sound.Id" src="https://localhost:5000/@sound.File.Path" />
+
+        <tr>
+            <td>@sound.Id</td>
+            <td>@sound.Bitrate</td>
+            <td>@sound.Length</td>
+            <td>@sound.File.Title</td>
+            <td>@sound.File.Description</td>
+            <td>@sound.File.Size</td>
+            <td>
+                <button style="background: none; outline: none; border: none" onclick="document.getElementById('sound+@sound.Id').play()"><span class="oi oi-media-play"></span></button>
+            </td>
+            <td>
+                <button style="background: none; outline: none; border: none" onclick="document.getElementById('sound+@sound.Id').pause()"><span class="oi oi-media-pause"></span></button>
+            </td>
+            
+        </tr>
+    }
+    </tbody>
+</table>
+}
+
+@code {
+    private string idPars;
+    private string nameParse;
+    private List<AudioFile> musicFiles;
+
+    
+    
+    protected override async Task OnInitializedAsync()
+    {
+        
+        var uri = navigationManager.ToAbsoluteUri(navigationManager.Uri);
+        
+        if(QueryHelpers.ParseQuery(uri.Query).TryGetValue("id", out var id))
+        {
+            idPars = id.First();
+        }
+
+        if(QueryHelpers.ParseQuery(uri.Query).TryGetValue("name", out var name))
+        {
+            nameParse = name.First();
+        }
+        
+        string url = $"{Program.apiURL}/users/" + idPars + "/audio-files";
+        
+        musicFiles = await Http.GetFromJsonAsync<List<AudioFile>>(url);
+    }
+    
+    
+    public class AudioFile
+    {
+        public Guid Id { get; set; }
+        
+        public int Length { get; set; }
+        
+        public int Bitrate { get; set; }
+        
+        public UserFiles.File File { get; set; }
+        
+    }
+    
+}

@@ -90,14 +90,14 @@ using BlazorStrap;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UserFiles.razor"
+#line 2 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/MusicFiles.razor"
 using Microsoft.AspNetCore.WebUtilities;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/user-files")]
-    public partial class UserFiles : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/music")]
+    public partial class MusicFiles : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -105,11 +105,13 @@ using Microsoft.AspNetCore.WebUtilities;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 60 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UserFiles.razor"
+#line 50 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/MusicFiles.razor"
        
     private string idPars;
     private string nameParse;
-    private List<File> allUserFiles;
+    private List<AudioFile> musicFiles;
+
+    
     
     protected override async Task OnInitializedAsync()
     {
@@ -118,7 +120,7 @@ using Microsoft.AspNetCore.WebUtilities;
         
         if(QueryHelpers.ParseQuery(uri.Query).TryGetValue("id", out var id))
         {
-             idPars = id.First();
+            idPars = id.First();
         }
 
         if(QueryHelpers.ParseQuery(uri.Query).TryGetValue("name", out var name))
@@ -126,25 +128,24 @@ using Microsoft.AspNetCore.WebUtilities;
             nameParse = name.First();
         }
         
-        string url = $"{Program.apiURL}/users/" + idPars + "/files";
+        string url = $"{Program.apiURL}/users/" + idPars + "/audio-files";
         
-        allUserFiles = await Http.GetFromJsonAsync<List<File>>(url);
+        musicFiles = await Http.GetFromJsonAsync<List<AudioFile>>(url);
     }
-        
-    public class File
+    
+    
+    public class AudioFile
     {
         public Guid Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Format { get; set; }
-        public float Size { get; set; }
-        public string Path { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        public Guid UserId{ get; set; }
-        public virtual Users.User User { get; set; }
+        
+        public int Length { get; set; }
+        
+        public int Bitrate { get; set; }
+        
+        public UserFiles.File File { get; set; }
+        
     }
-
+    
 
 #line default
 #line hidden
