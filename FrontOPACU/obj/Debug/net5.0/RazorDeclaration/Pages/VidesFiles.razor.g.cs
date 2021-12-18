@@ -127,7 +127,7 @@ using Blazored.Video.Support;
 
     void OnPlay(VideoState state)
     {
-        var url = state.CurrentSrc;
+        // var url = state.CurrentSrc;
     // do something with this
     }
     void OnTimeUpdate(VideoState state)
