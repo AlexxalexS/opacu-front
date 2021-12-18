@@ -105,7 +105,7 @@ using Microsoft.AspNetCore.WebUtilities;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 60 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UserFiles.razor"
+#line 74 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UserFiles.razor"
        
     private string idPars;
     private string nameParse;

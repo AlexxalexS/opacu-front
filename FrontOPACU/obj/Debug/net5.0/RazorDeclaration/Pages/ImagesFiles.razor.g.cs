@@ -90,14 +90,14 @@ using BlazorStrap;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/MusicFiles.razor"
+#line 2 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/ImagesFiles.razor"
 using Microsoft.AspNetCore.WebUtilities;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/music")]
-    public partial class MusicFiles : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/images")]
+    public partial class ImagesFiles : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -105,12 +105,11 @@ using Microsoft.AspNetCore.WebUtilities;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 56 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/MusicFiles.razor"
+#line 45 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/ImagesFiles.razor"
        
     private string idPars;
     private string nameParse;
-    private List<AudioFile> musicFiles;
-
+    private List<ImageFile> imageFiles;
     
     protected override async Task OnInitializedAsync()
     {
@@ -127,22 +126,20 @@ using Microsoft.AspNetCore.WebUtilities;
             nameParse = name.First();
         }
         
-        string url = $"{Program.apiURL}/users/" + idPars + "/audio-files";
+        string url = $"{Program.apiURL}/users/" + idPars + "/image-files";
         
-        musicFiles = await Http.GetFromJsonAsync<List<AudioFile>>(url);
+        imageFiles = await Http.GetFromJsonAsync<List<ImageFile>>(url);
     }
-    
-    
-    public class AudioFile
+
+    public class ImageFile
     {
         public Guid Id { get; set; }
         
-        public int Length { get; set; }
+        public string Resolution { get; set; }
         
-        public int Bitrate { get; set; }
-        
+        public string ColorPalette { get; set; }
+
         public UserFiles.File File { get; set; }
-        
     }
     
 

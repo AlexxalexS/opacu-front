@@ -90,14 +90,14 @@ using BlazorStrap;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/MusicFiles.razor"
+#line 2 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/VidesFiles.razor"
 using Microsoft.AspNetCore.WebUtilities;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/music")]
-    public partial class MusicFiles : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/videos")]
+    public partial class VidesFiles : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -105,12 +105,13 @@ using Microsoft.AspNetCore.WebUtilities;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 56 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/MusicFiles.razor"
+#line 56 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/VidesFiles.razor"
        
     private string idPars;
     private string nameParse;
-    private List<AudioFile> musicFiles;
+    private List<VideoFile> videoFiles;
 
+    
     
     protected override async Task OnInitializedAsync()
     {
@@ -127,22 +128,24 @@ using Microsoft.AspNetCore.WebUtilities;
             nameParse = name.First();
         }
         
-        string url = $"{Program.apiURL}/users/" + idPars + "/audio-files";
+        string url = $"{Program.apiURL}/users/" + idPars + "/video-files";
         
-        musicFiles = await Http.GetFromJsonAsync<List<AudioFile>>(url);
+        videoFiles = await Http.GetFromJsonAsync<List<VideoFile>>(url);
     }
     
     
-    public class AudioFile
+    public class VideoFile
     {
         public Guid Id { get; set; }
+
+        public string Resolution { get; set; }
         
         public int Length { get; set; }
         
         public int Bitrate { get; set; }
         
+        public string Encoding { get; set; }
         public UserFiles.File File { get; set; }
-        
     }
     
 

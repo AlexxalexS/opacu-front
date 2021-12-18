@@ -1930,3 +1930,9 @@
 /Users/alexey/Projects/opacu-front/FrontOPACU/obj/Debug/net5.0/build-gz/7OB3S1Wf.gz
 /Users/alexey/Projects/opacu-front/FrontOPACU/obj/Debug/net5.0/RazorDeclaration/Pages/MusicFiles.razor.g.cs
 /Users/alexey/Projects/opacu-front/FrontOPACU/obj/Debug/net5.0/Razor/Pages/MusicFiles.razor.g.cs
+/Users/alexey/Projects/opacu-front/FrontOPACU/obj/Debug/net5.0/RazorDeclaration/Pages/VidesFiles.razor.g.cs
+/Users/alexey/Projects/opacu-front/FrontOPACU/obj/Debug/net5.0/Razor/Pages/VidesFiles.razor.g.cs
+/Users/alexey/Projects/opacu-front/FrontOPACU/obj/Debug/net5.0/RazorDeclaration/Pages/TextFiles.razor.g.cs
+/Users/alexey/Projects/opacu-front/FrontOPACU/obj/Debug/net5.0/Razor/Pages/TextFiles.razor.g.cs
+/Users/alexey/Projects/opacu-front/FrontOPACU/obj/Debug/net5.0/RazorDeclaration/Pages/ImagesFiles.razor.g.cs
+/Users/alexey/Projects/opacu-front/FrontOPACU/obj/Debug/net5.0/Razor/Pages/ImagesFiles.razor.g.cs

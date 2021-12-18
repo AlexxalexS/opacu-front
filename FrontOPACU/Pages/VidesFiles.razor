@@ -1,30 +1,29 @@
-@page "/music"
+@page "/videos"
 @using Microsoft.AspNetCore.WebUtilities
 @inject NavigationManager navigationManager
 @inject HttpClient Http
 
-<h3>Музыка пользователя @nameParse</h3>
+<h3>Видео пользователя @nameParse</h3>
 
-@if (musicFiles == null)
+@if (videoFiles == null)
 {
 <p><em>Загрузка...</em></p>
 }
 else
 {
-    @if (musicFiles.Count > 0)
+    @if (videoFiles.Count > 0)
     {
         <table class="table">
             <thead>
             <tr>
                 <th>ID</th>
                 <th>Bitrate</th>
-                <th>Length</th>
-        
-                <th/>
+                <th>Resolution</th>
+                <th>Title</th>
             </tr>
             </thead>
             <tbody>
-            @foreach (var sound in musicFiles)
+            @foreach (var sound in videoFiles)
             {
        
                 <audio id="sound+@sound.Id" src="https://localhost:5000/@sound.File.Path" />
@@ -32,7 +31,7 @@ else
                 <tr>
                     <td>@sound.Id</td>
                     <td>@sound.Bitrate</td>
-                    <td>@sound.Length</td>
+                    <td>@sound.Resolution</td>
                     <td>@sound.File.Title</td>
                     <td>@sound.File.Description</td>
                     <td>@sound.File.Size</td>
@@ -48,6 +47,7 @@ else
             </tbody>
         </table>
     }
+    else
     {
         <h1>Вы еще не загрузили файлы</h1>
     }
@@ -56,8 +56,9 @@ else
 @code {
     private string idPars;
     private string nameParse;
-    private List<AudioFile> musicFiles;
+    private List<VideoFile> videoFiles;
 
+    
     
     protected override async Task OnInitializedAsync()
     {
@@ -74,22 +75,24 @@ else
             nameParse = name.First();
         }
         
-        string url = $"{Program.apiURL}/users/" + idPars + "/audio-files";
+        string url = $"{Program.apiURL}/users/" + idPars + "/video-files";
         
-        musicFiles = await Http.GetFromJsonAsync<List<AudioFile>>(url);
+        videoFiles = await Http.GetFromJsonAsync<List<VideoFile>>(url);
     }
     
     
-    public class AudioFile
+    public class VideoFile
     {
         public Guid Id { get; set; }
+
+        public string Resolution { get; set; }
         
         public int Length { get; set; }
         
         public int Bitrate { get; set; }
         
+        public string Encoding { get; set; }
         public UserFiles.File File { get; set; }
-        
     }
     
 }

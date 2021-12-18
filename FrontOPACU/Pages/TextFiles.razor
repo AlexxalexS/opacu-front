@@ -1,38 +1,37 @@
-@page "/music"
+@page "/docs"
 @using Microsoft.AspNetCore.WebUtilities
 @inject NavigationManager navigationManager
 @inject HttpClient Http
 
-<h3>Музыка пользователя @nameParse</h3>
+<h3>Файлы пользователя @nameParse</h3>
 
-@if (musicFiles == null)
+@if (textFiles == null)
 {
 <p><em>Загрузка...</em></p>
 }
 else
 {
-    @if (musicFiles.Count > 0)
+    @if (textFiles.Count > 0)
     {
         <table class="table">
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Bitrate</th>
-                <th>Length</th>
-        
+                <th>SymbolCount</th>
+                <th>Encoding</th>
                 <th/>
             </tr>
             </thead>
             <tbody>
-            @foreach (var sound in musicFiles)
+            @foreach (var sound in textFiles)
             {
        
                 <audio id="sound+@sound.Id" src="https://localhost:5000/@sound.File.Path" />
 
                 <tr>
                     <td>@sound.Id</td>
-                    <td>@sound.Bitrate</td>
-                    <td>@sound.Length</td>
+                    <td>@sound.SymbolCount</td>
+                    <td>@sound.Encoding</td>
                     <td>@sound.File.Title</td>
                     <td>@sound.File.Description</td>
                     <td>@sound.File.Size</td>
@@ -56,8 +55,7 @@ else
 @code {
     private string idPars;
     private string nameParse;
-    private List<AudioFile> musicFiles;
-
+    private List<TextFile> textFiles;
     
     protected override async Task OnInitializedAsync()
     {
@@ -74,22 +72,21 @@ else
             nameParse = name.First();
         }
         
-        string url = $"{Program.apiURL}/users/" + idPars + "/audio-files";
+        string url = $"{Program.apiURL}/users/" + idPars + "/text-files";
         
-        musicFiles = await Http.GetFromJsonAsync<List<AudioFile>>(url);
+        textFiles = await Http.GetFromJsonAsync<List<TextFile>>(url);
     }
     
     
-    public class AudioFile
+    public class TextFile
     {
         public Guid Id { get; set; }
+
+        public int SymbolCount { get; set; }
         
-        public int Length { get; set; }
-        
-        public int Bitrate { get; set; }
+        public string Encoding { get; set; }
         
         public UserFiles.File File { get; set; }
-        
     }
     
 }
