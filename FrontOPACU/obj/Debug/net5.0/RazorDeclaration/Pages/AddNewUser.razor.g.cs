@@ -83,6 +83,13 @@ using FrontOPACU.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 11 "/Users/alexey/Projects/opacu-front/FrontOPACU/_Imports.razor"
+using BlazorStrap;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/AddNewUser.razor"
 using System.Text;
 

@@ -17,6 +17,7 @@
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly/5.0.11/build/net5.0/Microsoft.AspNetCore.Components.WebAssembly.props" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly/5.0.11/build/net5.0/Microsoft.AspNetCore.Components.WebAssembly.props')" />
+    <Import Project="$(NuGetPackageRoot)blazorstrap/1.5.101-preview-6/buildTransitive/BlazorStrap.props" Condition="Exists('$(NuGetPackageRoot)blazorstrap/1.5.101-preview-6/buildTransitive/BlazorStrap.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_AspNetCore_Components_WebAssembly_DevServer Condition=" '$(PkgMicrosoft_AspNetCore_Components_WebAssembly_DevServer)' == '' ">/Users/alexey/.nuget/packages/microsoft.aspnetcore.components.webassembly.devserver/5.0.11</PkgMicrosoft_AspNetCore_Components_WebAssembly_DevServer>

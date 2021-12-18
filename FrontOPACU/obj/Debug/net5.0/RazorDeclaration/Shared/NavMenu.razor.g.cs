@@ -82,6 +82,13 @@ using FrontOPACU.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "/Users/alexey/Projects/opacu-front/FrontOPACU/_Imports.razor"
+using BlazorStrap;
+
+#line default
+#line hidden
+#nullable disable
     public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

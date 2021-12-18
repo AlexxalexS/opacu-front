@@ -82,6 +82,13 @@ using FrontOPACU.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "/Users/alexey/Projects/opacu-front/FrontOPACU/_Imports.razor"
+using BlazorStrap;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/users")]
     public partial class Users : Microsoft.AspNetCore.Components.ComponentBase
     {

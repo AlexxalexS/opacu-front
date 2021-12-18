@@ -2,6 +2,37 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "BlazorComponentUtilities/1.6.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.3.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/BlazorComponentUtilities.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/BlazorComponentUtilities.dll": {}
+        }
+      },
+      "BlazorStrap/1.5.101-Preview-6": {
+        "type": "package",
+        "dependencies": {
+          "BlazorComponentUtilities": "1.6.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.8"
+        },
+        "compile": {
+          "lib/net5.0/BlazorStrap.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/BlazorStrap.dll": {}
+        },
+        "build": {
+          "buildTransitive/BlazorStrap.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/BlazorStrap.props": {}
+        }
+      },
       "Microsoft.AspNetCore.Authorization/5.0.11": {
         "type": "package",
         "dependencies": {
@@ -314,6 +345,24 @@
           "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll": {}
         }
       },
+      "Microsoft.NETCore.Platforms/1.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
+      "Microsoft.NETCore.Targets/1.1.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
       "Newtonsoft.Json/13.0.1": {
         "type": "package",
         "compile": {
@@ -348,6 +397,16 @@
         },
         "runtime": {
           "lib/net5.0/System.Net.Http.Json.dll": {}
+        }
+      },
+      "System.Runtime/4.3.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Targets": "1.1.3"
+        },
+        "compile": {
+          "ref/netstandard1.5/System.Runtime.dll": {}
         }
       },
       "System.Text.Encodings.Web/4.5.0": {
@@ -361,6 +420,37 @@
       }
     },
     "net5.0/browser-wasm": {
+      "BlazorComponentUtilities/1.6.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.3.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/BlazorComponentUtilities.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/BlazorComponentUtilities.dll": {}
+        }
+      },
+      "BlazorStrap/1.5.101-Preview-6": {
+        "type": "package",
+        "dependencies": {
+          "BlazorComponentUtilities": "1.6.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.8"
+        },
+        "compile": {
+          "lib/net5.0/BlazorStrap.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/BlazorStrap.dll": {}
+        },
+        "build": {
+          "buildTransitive/BlazorStrap.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/BlazorStrap.props": {}
+        }
+      },
       "Microsoft.AspNetCore.Authorization/5.0.11": {
         "type": "package",
         "dependencies": {
@@ -673,6 +763,24 @@
           "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll": {}
         }
       },
+      "Microsoft.NETCore.Platforms/1.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
+      "Microsoft.NETCore.Targets/1.1.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
       "Newtonsoft.Json/13.0.1": {
         "type": "package",
         "compile": {
@@ -680,6 +788,18 @@
         },
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "runtime.any.System.Runtime/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Private.Uri": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.5/System.Runtime.dll": {}
         }
       },
       "System.Buffers/4.5.0": {
@@ -707,6 +827,27 @@
         },
         "runtime": {
           "lib/net5.0/System.Net.Http.Json.dll": {}
+        }
+      },
+      "System.Private.Uri/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0"
+        },
+        "compile": {
+          "ref/netstandard/_._": {}
+        }
+      },
+      "System.Runtime/4.3.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Targets": "1.1.3",
+          "runtime.any.System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.5/System.Runtime.dll": {}
         }
       },
       "System.Text.Encodings.Web/4.5.0": {
@@ -721,6 +862,43 @@
     }
   },
   "libraries": {
+    "BlazorComponentUtilities/1.6.0": {
+      "sha512": "lMs6tJpkgYWmze2+hEp0Kg4VeIuZPkS6ekt7k+18tE+4iMAy3xlgM5XJw1fzOZjpYQj3X9rex6T3Eoij52tyXw==",
+      "type": "package",
+      "path": "blazorcomponentutilities/1.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "blazor-glove-256.jpg",
+        "blazorcomponentutilities.1.6.0.nupkg.sha512",
+        "blazorcomponentutilities.nuspec",
+        "lib/netstandard2.0/BlazorComponentUtilities.dll"
+      ]
+    },
+    "BlazorStrap/1.5.101-Preview-6": {
+      "sha512": "a8IJ3uVGny8tw41JP/9I+8+t4tIdLcnzb6sSx/gqPY6y7gvtmbJPwBWRzGPZ1RxNvYJG3Q8ak9RrRuAGWmKl9A==",
+      "type": "package",
+      "path": "blazorstrap/1.5.101-preview-6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "blazorstrap.1.5.101-preview-6.nupkg.sha512",
+        "blazorstrap.nuspec",
+        "build/BlazorStrap.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/BlazorStrap.props",
+        "buildTransitive/BlazorStrap.props",
+        "lib/net5.0/BlazorStrap.dll",
+        "lib/netstandard2.0/BlazorStrap.dll",
+        "staticwebassets/blazorStrap.js",
+        "staticwebassets/css/cromefix.css",
+        "staticwebassets/css/submenu.css",
+        "staticwebassets/popper.min.js",
+        "staticwebassets/popper.min.js.map",
+        "staticwebassets/site.webmanifest"
+      ]
+    },
     "Microsoft.AspNetCore.Authorization/5.0.11": {
       "sha512": "LlxMpRykUVpM+KesasvJXKvB+6kYMW4QHldsIT1y8Diwaxf0U70aVvVp1crZbLIAdRF+4Che5iSh4Xrv2wTW5w==",
       "type": "package",
@@ -1220,6 +1398,36 @@
         "microsoft.net.http.headers.nuspec"
       ]
     },
+    "Microsoft.NETCore.Platforms/1.1.1": {
+      "sha512": "TMBuzAHpTenGbGgk0SMTwyEkyijY/Eae4ZGsFNYJvAr/LDn1ku3Etp3FPxChmDp5HHF3kzJuoaa08N0xjqAJfQ==",
+      "type": "package",
+      "path": "microsoft.netcore.platforms/1.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/netstandard1.0/_._",
+        "microsoft.netcore.platforms.1.1.1.nupkg.sha512",
+        "microsoft.netcore.platforms.nuspec",
+        "runtime.json"
+      ]
+    },
+    "Microsoft.NETCore.Targets/1.1.3": {
+      "sha512": "3Wrmi0kJDzClwAC+iBdUBpEKmEle8FQNsCs77fkiOIw/9oYA07bL1EZNX0kQ2OMN3xpwvl0vAtOCYY3ndDNlhQ==",
+      "type": "package",
+      "path": "microsoft.netcore.targets/1.1.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/netstandard1.0/_._",
+        "microsoft.netcore.targets.1.1.3.nupkg.sha512",
+        "microsoft.netcore.targets.nuspec",
+        "runtime.json"
+      ]
+    },
     "Newtonsoft.Json/13.0.1": {
       "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
       "type": "package",
@@ -1245,6 +1453,33 @@
         "newtonsoft.json.13.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
+      ]
+    },
+    "runtime.any.System.Runtime/4.3.0": {
+      "sha512": "fRS7zJgaG9NkifaAxGGclDDoRn9HC7hXACl52Or06a/fxdzDajWb5wov3c6a+gVSlekRoexfjwQSK9sh5um5LQ==",
+      "type": "package",
+      "path": "runtime.any.system.runtime/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/System.Runtime.dll",
+        "lib/netstandard1.5/System.Runtime.dll",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/netstandard/_._",
+        "runtime.any.system.runtime.4.3.0.nupkg.sha512",
+        "runtime.any.system.runtime.nuspec",
+        "runtimes/aot/lib/netcore50/_._"
       ]
     },
     "System.Buffers/4.5.0": {
@@ -1324,6 +1559,112 @@
         "version.txt"
       ]
     },
+    "System.Private.Uri/4.3.0": {
+      "sha512": "I4SwANiUGho1esj4V4oSlPllXjzCZDE+5XXso2P03LW2vOda2Enzh8DWOxwN6hnrJyp314c7KuVu31QYhRzOGg==",
+      "type": "package",
+      "path": "system.private.uri/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "ref/netstandard/_._",
+        "system.private.uri.4.3.0.nupkg.sha512",
+        "system.private.uri.nuspec"
+      ]
+    },
+    "System.Runtime/4.3.1": {
+      "sha512": "abhfv1dTK6NXOmu4bgHIONxHyEqFjW8HwXPmpY9gmll+ix9UNo4XDcmzJn6oLooftxNssVHdJC1pGT9jkSynQg==",
+      "type": "package",
+      "path": "system.runtime/4.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/net462/System.Runtime.dll",
+        "lib/portable-net45+win8+wp80+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/net462/System.Runtime.dll",
+        "ref/netcore50/System.Runtime.dll",
+        "ref/netcore50/System.Runtime.xml",
+        "ref/netcore50/de/System.Runtime.xml",
+        "ref/netcore50/es/System.Runtime.xml",
+        "ref/netcore50/fr/System.Runtime.xml",
+        "ref/netcore50/it/System.Runtime.xml",
+        "ref/netcore50/ja/System.Runtime.xml",
+        "ref/netcore50/ko/System.Runtime.xml",
+        "ref/netcore50/ru/System.Runtime.xml",
+        "ref/netcore50/zh-hans/System.Runtime.xml",
+        "ref/netcore50/zh-hant/System.Runtime.xml",
+        "ref/netstandard1.0/System.Runtime.dll",
+        "ref/netstandard1.0/System.Runtime.xml",
+        "ref/netstandard1.0/de/System.Runtime.xml",
+        "ref/netstandard1.0/es/System.Runtime.xml",
+        "ref/netstandard1.0/fr/System.Runtime.xml",
+        "ref/netstandard1.0/it/System.Runtime.xml",
+        "ref/netstandard1.0/ja/System.Runtime.xml",
+        "ref/netstandard1.0/ko/System.Runtime.xml",
+        "ref/netstandard1.0/ru/System.Runtime.xml",
+        "ref/netstandard1.0/zh-hans/System.Runtime.xml",
+        "ref/netstandard1.0/zh-hant/System.Runtime.xml",
+        "ref/netstandard1.2/System.Runtime.dll",
+        "ref/netstandard1.2/System.Runtime.xml",
+        "ref/netstandard1.2/de/System.Runtime.xml",
+        "ref/netstandard1.2/es/System.Runtime.xml",
+        "ref/netstandard1.2/fr/System.Runtime.xml",
+        "ref/netstandard1.2/it/System.Runtime.xml",
+        "ref/netstandard1.2/ja/System.Runtime.xml",
+        "ref/netstandard1.2/ko/System.Runtime.xml",
+        "ref/netstandard1.2/ru/System.Runtime.xml",
+        "ref/netstandard1.2/zh-hans/System.Runtime.xml",
+        "ref/netstandard1.2/zh-hant/System.Runtime.xml",
+        "ref/netstandard1.3/System.Runtime.dll",
+        "ref/netstandard1.3/System.Runtime.xml",
+        "ref/netstandard1.3/de/System.Runtime.xml",
+        "ref/netstandard1.3/es/System.Runtime.xml",
+        "ref/netstandard1.3/fr/System.Runtime.xml",
+        "ref/netstandard1.3/it/System.Runtime.xml",
+        "ref/netstandard1.3/ja/System.Runtime.xml",
+        "ref/netstandard1.3/ko/System.Runtime.xml",
+        "ref/netstandard1.3/ru/System.Runtime.xml",
+        "ref/netstandard1.3/zh-hans/System.Runtime.xml",
+        "ref/netstandard1.3/zh-hant/System.Runtime.xml",
+        "ref/netstandard1.5/System.Runtime.dll",
+        "ref/netstandard1.5/System.Runtime.xml",
+        "ref/netstandard1.5/de/System.Runtime.xml",
+        "ref/netstandard1.5/es/System.Runtime.xml",
+        "ref/netstandard1.5/fr/System.Runtime.xml",
+        "ref/netstandard1.5/it/System.Runtime.xml",
+        "ref/netstandard1.5/ja/System.Runtime.xml",
+        "ref/netstandard1.5/ko/System.Runtime.xml",
+        "ref/netstandard1.5/ru/System.Runtime.xml",
+        "ref/netstandard1.5/zh-hans/System.Runtime.xml",
+        "ref/netstandard1.5/zh-hant/System.Runtime.xml",
+        "ref/portable-net45+win8+wp80+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.runtime.4.3.1.nupkg.sha512",
+        "system.runtime.nuspec"
+      ]
+    },
     "System.Text.Encodings.Web/4.5.0": {
       "sha512": "Xg4G4Indi4dqP1iuAiMSwpiWS54ZghzR644OtsRCm/m/lBMG8dUBhLVN7hLm8NNrNTR+iGbshCPTwrvxZPlm4g==",
       "type": "package",
@@ -1346,6 +1687,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "BlazorStrap >= 1.5.101-Preview-6",
       "Microsoft.AspNetCore.Components.WebAssembly >= 5.0.11",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 5.0.11",
       "Microsoft.AspNetCore.WebUtilities >= 2.2.0",
@@ -1390,6 +1732,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "BlazorStrap": {
+            "target": "Package",
+            "version": "[1.5.101-Preview-6, )"
+          },
           "Microsoft.AspNetCore.Components.WebAssembly": {
             "target": "Package",
             "version": "[5.0.11, )"

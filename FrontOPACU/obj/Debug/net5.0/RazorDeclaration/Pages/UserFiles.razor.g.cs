@@ -83,6 +83,13 @@ using FrontOPACU.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 11 "/Users/alexey/Projects/opacu-front/FrontOPACU/_Imports.razor"
+using BlazorStrap;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UserFiles.razor"
 using Microsoft.AspNetCore.WebUtilities;
 
@@ -98,7 +105,7 @@ using Microsoft.AspNetCore.WebUtilities;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 51 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UserFiles.razor"
+#line 55 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UserFiles.razor"
        
     private string idPars;
     private string nameParse;
