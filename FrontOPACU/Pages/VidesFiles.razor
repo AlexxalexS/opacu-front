@@ -3,6 +3,9 @@
 @inject NavigationManager navigationManager
 @inject HttpClient Http
 
+@using Blazored.Video
+@using Blazored.Video.Support
+
 <h3>Видео пользователя @nameParse</h3>
 
 @if (videoFiles == null)
@@ -16,32 +19,35 @@ else
         <table class="table">
             <thead>
             <tr>
+                <th>Video</th>
                 <th>ID</th>
                 <th>Bitrate</th>
                 <th>Resolution</th>
                 <th>Title</th>
+                <th>Description</th>
+                <th>Size</th>
             </tr>
             </thead>
             <tbody>
             @foreach (var sound in videoFiles)
             {
-       
-                <audio id="sound+@sound.Id" src="https://localhost:5000/@sound.File.Path" />
-
+                
                 <tr>
+                    <td>
+                        <BlazoredVideo Play="OnPlay"
+                                       class="w-100"
+                                       style="max-width:800px;"
+                                       controls="controls">
+                            <source src="https://localhost:5000/@sound.File.Path" type="video/mp4"/>
+                        </BlazoredVideo>
+                    </td>
                     <td>@sound.Id</td>
                     <td>@sound.Bitrate</td>
                     <td>@sound.Resolution</td>
                     <td>@sound.File.Title</td>
                     <td>@sound.File.Description</td>
                     <td>@sound.File.Size</td>
-                    <td>
-                        <button style="background: none; outline: none; border: none" onclick="document.getElementById('sound+@sound.Id').play()"><span class="oi oi-media-play"></span></button>
-                    </td>
-                    <td>
-                        <button style="background: none; outline: none; border: none" onclick="document.getElementById('sound+@sound.Id').pause()"><span class="oi oi-media-pause"></span></button>
-                    </td>
-            
+
                 </tr>
             }
             </tbody>
@@ -58,7 +64,17 @@ else
     private string nameParse;
     private List<VideoFile> videoFiles;
 
-    
+    void OnPlay(VideoState state)
+    {
+        var url = state.CurrentSrc;
+    // do something with this
+    }
+    void OnTimeUpdate(VideoState state)
+    {
+        var url = state.CurrentSrc;
+        var currentTime = state.CurrentTime;
+    // do something with this
+    }
     
     protected override async Task OnInitializedAsync()
     {

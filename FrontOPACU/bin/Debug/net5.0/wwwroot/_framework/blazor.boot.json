@@ -8,6 +8,7 @@
   "resources": {
     "assembly": {
       "BlazorComponentUtilities.dll": "sha256-9VqqASjMRw8LX9vNXRKXBE+XlDpUfTeuo4+CPgg1fQE=",
+      "Blazored.Video.dll": "sha256-zVNaQ7Aju89L5fUokzU+aTpKkBSZtFpn7ifN4LHCOug=",
       "BlazorStrap.dll": "sha256-0Dcij9yl4r4eqj+zmpW6\/GJLKmeNYTk8YYTPiWhjW8I=",
       "Microsoft.AspNetCore.Authorization.dll": "sha256-ktaWu1p6pD2yy7T\/20KVYU7oihmpYm3jrPw4QHb7J+k=",
       "Microsoft.AspNetCore.Components.dll": "sha256-alrtyx++CQU1VO\/6akeZFBPsYgrGGm+Z5ax9\/kaPM3k=",
@@ -200,11 +201,11 @@
       "mscorlib.dll": "sha256-heWnofXFSc\/TfAxrWpjQxeuS+nlIOs9YycfI2QGXGM8=",
       "netstandard.dll": "sha256-mbIVAluJ7cAx0vUQshB\/c1zEIK5JcYwIYxo\/BQ\/meRU=",
       "System.Private.CoreLib.dll": "sha256-FrZbEyy47f3RDuj77R5oHUGxSGEDgRRxykTjImrLqfM=",
-      "FrontOPACU.dll": "sha256-qwjm7g9xCLemw7\/ItRGI4qXZF2BiM7\/Vo\/+d\/0GgGfU="
+      "FrontOPACU.dll": "sha256-o8FmcLyAPeIJ2iQHhoS9ey0FPPaY4dGwupKg9DvucxU="
     },
     "lazyAssembly": null,
     "pdb": {
-      "FrontOPACU.pdb": "sha256-Y6xuG1DMjsDeAL\/dUTeMbb7LqM1BRQDK6XKONjonIBY="
+      "FrontOPACU.pdb": "sha256-isfDGfjlP0kTjoaD4I094KApM5Uvzr+wkbp1Lh6R0Pc="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-5ttRwTa4Rar530elwLdfGDeH9I9NX9MPyDl6zLi9uug=",

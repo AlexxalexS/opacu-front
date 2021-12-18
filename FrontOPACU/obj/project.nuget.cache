@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "7ztFWQT9Ql9eNJ5MrKrbioZHTLqd+fjhHDTiqAYp+m7+iZqbrI93+Cu3swdTlFfG+Lrb+Imcb7U+Vmo33LD36A==",
+  "dgSpecHash": "V23XRcU7Z3DlrmU4NfRYR211WRYsWiFfbUUGiZxmbwjh6dQ32Z+R1oubmPYgSOmj5cKYek2/yAybaPNne6TL/Q==",
   "success": true,
   "projectFilePath": "/Users/alexey/Projects/opacu-front/FrontOPACU/FrontOPACU.csproj",
   "expectedPackageFiles": [
     "/Users/alexey/.nuget/packages/blazorcomponentutilities/1.6.0/blazorcomponentutilities.1.6.0.nupkg.sha512",
+    "/Users/alexey/.nuget/packages/blazored.video/1.0.0/blazored.video.1.0.0.nupkg.sha512",
     "/Users/alexey/.nuget/packages/blazorstrap/1.5.101-preview-6/blazorstrap.1.5.101-preview-6.nupkg.sha512",
     "/Users/alexey/.nuget/packages/microsoft.aspnetcore.authorization/5.0.11/microsoft.aspnetcore.authorization.5.0.11.nupkg.sha512",
     "/Users/alexey/.nuget/packages/microsoft.aspnetcore.components/5.0.11/microsoft.aspnetcore.components.5.0.11.nupkg.sha512",

@@ -1936,3 +1936,6 @@
 /Users/alexey/Projects/opacu-front/FrontOPACU/obj/Debug/net5.0/Razor/Pages/TextFiles.razor.g.cs
 /Users/alexey/Projects/opacu-front/FrontOPACU/obj/Debug/net5.0/RazorDeclaration/Pages/ImagesFiles.razor.g.cs
 /Users/alexey/Projects/opacu-front/FrontOPACU/obj/Debug/net5.0/Razor/Pages/ImagesFiles.razor.g.cs
+/Users/alexey/Projects/opacu-front/FrontOPACU/bin/Debug/net5.0/wwwroot/_framework/Blazored.Video.dll.gz
+/Users/alexey/Projects/opacu-front/FrontOPACU/bin/Debug/net5.0/wwwroot/_framework/Blazored.Video.dll
+/Users/alexey/Projects/opacu-front/FrontOPACU/obj/Debug/net5.0/build-gz/RCrcr+sL.gz

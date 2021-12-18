@@ -96,6 +96,20 @@ using Microsoft.AspNetCore.WebUtilities;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/VidesFiles.razor"
+using Blazored.Video;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 7 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/VidesFiles.razor"
+using Blazored.Video.Support;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/videos")]
     public partial class VidesFiles : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -105,13 +119,23 @@ using Microsoft.AspNetCore.WebUtilities;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 56 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/VidesFiles.razor"
+#line 62 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/VidesFiles.razor"
        
     private string idPars;
     private string nameParse;
     private List<VideoFile> videoFiles;
 
-    
+    void OnPlay(VideoState state)
+    {
+        var url = state.CurrentSrc;
+    // do something with this
+    }
+    void OnTimeUpdate(VideoState state)
+    {
+        var url = state.CurrentSrc;
+        var currentTime = state.CurrentTime;
+    // do something with this
+    }
     
     protected override async Task OnInitializedAsync()
     {
