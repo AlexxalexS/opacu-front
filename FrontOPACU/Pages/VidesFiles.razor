@@ -5,10 +5,10 @@
 
 @using Blazored.Video
 @using Blazored.Video.Support
-<a href="/user-files?id=@idPars">
-    <BSButton Size="Size.Small" Color="Color.Primary"><span class="oi oi-arrow-thick-left"></span>Назад</BSButton>
+<a href="/user-files?id=@idPars&name=@nameParse">
+    <BSButton Size="Size.Small" Color="Color.Primary"><span class="oi oi-arrow-thick-left"></span> Назад</BSButton>
 </a>
-<br>
+<br><br>
 
 <h3>Видео пользователя @nameParse</h3>
 
@@ -20,46 +20,36 @@ else
 {
     @if (videoFiles.Count > 0)
     {
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Video</th>
-                <th>ID</th>
-                <th>Bitrate</th>
-                <th>Resolution</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Size</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach (var sound in videoFiles)
+        <div>
+            @foreach (var video in videoFiles)
             {
-                
-                <tr>
-                    <td>
-                        <BlazoredVideo Play="OnPlay"
-                                       class="w-100"
-                                       style="max-width:800px;"
-                                       controls="controls">
-                            <source src="https://localhost:5000/@sound.File.Path" type="video/mp4"/>
-                        </BlazoredVideo>
-                    </td>
-                    <td>@sound.Id</td>
-                    <td>@sound.Bitrate</td>
-                    <td>@sound.Resolution</td>
-                    <td>@sound.File.Title</td>
-                    <td>@sound.File.Description</td>
-                    <td>@sound.File.Size</td>
-
-                </tr>
+                <div>
+                    <span>Название: <h3 style="text-decoration: underline">@video.File.Title</h3></span>
+                    Описасние: <span style="font-style: italic">@video.File.Description</span>
+                </div>
+                <BlazoredVideo Play="OnPlay"
+                               class="w-100"
+                               style="max-height: 300px; border: 2px"
+                               controls="controls">
+                    <source src="https://localhost:5000/@video.File.Path" type="video/mp4"/>
+                </BlazoredVideo>
+                <div>
+                    Характиристики:
+                    <ul>
+                        <li>Битрейт: @video.Bitrate</li>
+                        <li>Разрешение: @video.Resolution</li>
+                        <li>Размер: @video.File.Size</li>
+                        <li>ID: @video.Id</li>
+                    </ul>
+                </div>
+                <hr/>
+                <br/>
             }
-            </tbody>
-        </table>
+        </div>
     }
     else
     {
-        <h1>Вы еще не загрузили файлы</h1>
+        <h1>Вы еще не загрузили видео</h1>
     }
 }
 

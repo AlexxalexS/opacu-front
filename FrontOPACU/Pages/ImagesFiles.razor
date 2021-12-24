@@ -3,10 +3,10 @@
 @inject NavigationManager navigationManager
 @inject HttpClient Http
 
-<a href="/user-files?id=@idPars">
-    <BSButton Size="Size.Small" Color="Color.Primary"><span class="oi oi-arrow-thick-left"></span>Назад</BSButton>
+<a href="/users">
+    <BSButton Size="Size.Small" Color="Color.Primary"><span class="oi oi-arrow-thick-left"></span> Назад</BSButton>
 </a>
-<br>
+<br/><br/>
 
 <h3>Картинки пользователя @nameParse</h3>
 
@@ -18,32 +18,36 @@ else
 {
     @if (imageFiles.Count > 0)
     {
-        <table class="table">
+        <BSTable IsBordered="true" class="table">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Resolution</th>
-                <th>ColorPalette</th>
                 <th/>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Разрешение</th>
+                <th>Цветовой профиль</th>
+                <th>Размер</th>
+                <th>ID</th>
             </tr>
             </thead>
             <tbody>
-            @foreach (var sound in imageFiles)
+            @foreach (var image in imageFiles)
             {
                 <tr>
-                    <td><img src="https://localhost:5000/@sound.File.Path" width="300px"/></td>
-                    <td>@sound.Resolution</td>
-                    <td>@sound.ColorPalette</td>
-                    <td>@sound.File.Title</td>
-                    <td>@sound.File.Description</td>
-                    <td>@sound.File.Size</td>
+                    <td><img src="https://localhost:5000/@image.File.Path" height="300px"/></td>
+                    <td>@image.File.Title</td>
+                    <td>@image.File.Description</td>
+                    <td>@image.Resolution</td>
+                    <td>@image.ColorPalette</td>
+                    <td>@image.File.Size</td>
+                    <td>@image.Id</td>
                 </tr>
             }
             </tbody>
-        </table>
-    }
+        </BSTable>
+    } else 
     {
-        <h1>Вы еще не загрузили файлы</h1>
+        <h1>Вы еще не загрузили картинки</h1>
     }
 }
 

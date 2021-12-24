@@ -3,10 +3,26 @@
 @inject NavigationManager navigationManager
 @inject HttpClient Http
 
-<a href="/user-files?id=@idPars">
-    <BSButton Size="Size.Small" Color="Color.Primary"><span class="oi oi-arrow-thick-left"></span>Назад</BSButton>
+<style>
+    button {
+        margin-right: 10px;
+        background: lightgray;
+        border-radius: 25px;
+        outline: none; 
+        border: none;   
+    }
+    button:focus {
+        background: green;
+    }
+    .icon__style {
+        padding: 8px;
+    }
+</style>
+
+<a href="/user-files?id=@idPars&name=@nameParse">
+    <BSButton Size="Size.Small" Color="Color.Primary"><span class="oi oi-arrow-thick-left"></span> Назад</BSButton>
 </a>
-<br>
+<br><br>
 
 <h3>Музыка пользователя @nameParse</h3>
 
@@ -18,14 +34,17 @@ else
 {
     @if (musicFiles.Count > 0)
     {
-        <table class="table">
+        <BSTable IsBordered="true" class="table">
             <thead>
             <tr>
+                <th>Название</th>
+                <th>Описиание</th>
+                <th>Длина</th>
                 <th>ID</th>
-                <th>Bitrate</th>
-                <th>Length</th>
-        
-                <th/>
+                <th>Битрейт</th>
+                <th>Размер файла</th>
+                <th>Усправление музыкой</th>
+
             </tr>
             </thead>
             <tbody>
@@ -35,26 +54,33 @@ else
                 <audio id="sound+@sound.Id" src="https://localhost:5000/@sound.File.Path" />
 
                 <tr>
-                    <td>@sound.Id</td>
-                    <td>@sound.Bitrate</td>
-                    <td>@sound.Length</td>
                     <td>@sound.File.Title</td>
                     <td>@sound.File.Description</td>
+                    <td>@sound.Length</td>
+                    <td>@sound.Id</td>
+                    <td>@sound.Bitrate</td>
                     <td>@sound.File.Size</td>
+                    
                     <td>
-                        <button style="background: none; outline: none; border: none" onclick="document.getElementById('sound+@sound.Id').play()"><span class="oi oi-media-play"></span></button>
+                        <button onclick="document.getElementById('sound+@sound.Id').play()">
+                            <span class="icon__style oi oi-media-play"></span>
+                        </button>
+                        
+                        <button onclick="document.getElementById('sound+@sound.Id').pause()">
+                            <span class="icon__style oi oi-media-pause"></span>
+                        </button>
+                        <button onclick="document.getElementById('sound+@sound.Id').pause();document.getElementById('sound+@sound.Id').currentTime=0;">
+                            <span class="icon__style oi oi-media-stop"></span>
+                        </button>
                     </td>
-                    <td>
-                        <button style="background: none; outline: none; border: none" onclick="document.getElementById('sound+@sound.Id').pause()"><span class="oi oi-media-pause"></span></button>
-                    </td>
-            
                 </tr>
             }
             </tbody>
-        </table>
-    }
+        </BSTable>
+    } 
+    else
     {
-        <h1>Вы еще не загрузили файлы</h1>
+        <h1>Вы еще не загрузили музыку</h1>
     }
 }
 

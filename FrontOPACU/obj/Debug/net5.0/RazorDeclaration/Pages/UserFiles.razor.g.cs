@@ -105,11 +105,12 @@ using Microsoft.AspNetCore.WebUtilities;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 71 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UserFiles.razor"
+#line 120 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UserFiles.razor"
        
     private string idPars;
     private string nameParse;
     private List<File> allUserFiles;
+    private File temp;
     
     protected override async Task OnInitializedAsync()
     {
@@ -130,6 +131,29 @@ using Microsoft.AspNetCore.WebUtilities;
         
         allUserFiles = await Http.GetFromJsonAsync<List<File>>(url);
     }
+    
+    private async void DeleteFile(File file)
+    {
+       
+        try
+        {
+            var response = await Http.DeleteAsync($"{Program.apiURL}/users/" + idPars + "/files/" + file.Id).ConfigureAwait(false);
+            
+            if (response.IsSuccessStatusCode)
+            {
+                string url = $"{Program.apiURL}/users/" + idPars + "/files";
+                allUserFiles = await Http.GetFromJsonAsync<List<File>>(url);
+                StateHasChanged();
+            }
+            
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
         
     public class File
     {

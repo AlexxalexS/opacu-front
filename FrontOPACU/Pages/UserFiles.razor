@@ -3,26 +3,29 @@
 @inject NavigationManager navigationManager
 @inject HttpClient Http
 
+
 <a href="/users">
-    <BSButton Size="Size.Small" Color="Color.Primary"><span class="oi oi-arrow-thick-left"></span>Назад</BSButton>
+    <BSButton Size="Size.Small" Color="Color.Primary"><span class="oi oi-arrow-thick-left"></span> Назад</BSButton>
 </a>
+<br/><br/>
 
-<h3>Файлы пользователя @nameParse</h3>
+<h3>Все файлы пользователя: <span style="text-decoration: underline">@nameParse</span></h3>
 
+Показать только фалы типа:
 <a href="/music?id=@idPars&name=@nameParse">
-    <BSButton Color="Color.Primary">Музыка</BSButton> |
+    <BSButton Size="Size.Small" IsOutline="true" Color="Color.Info">Музыка</BSButton> |
 </a>
 
 <a href="/docs?id=@idPars&name=@nameParse">
-    <BSButton Color="Color.Primary">Документы</BSButton> |
+    <BSButton Size="Size.Small" IsOutline="true" Color="Color.Info">Документы</BSButton> |
 </a>
 
 <a href="/videos?id=@idPars&name=@nameParse">
-    <BSButton Color="Color.Primary">Видео</BSButton> |
+    <BSButton Size="Size.Small" IsOutline="true" Color="Color.Info">Видео</BSButton> |
 </a>
 
 <a href="/images?id=@idPars&name=@nameParse">
-    <BSButton Color="Color.Primary">Картинки</BSButton>
+    <BSButton Size="Size.Small" IsOutline="true" Color="Color.Info">Картинки</BSButton>
 </a>
 
 <br>
@@ -37,41 +40,88 @@ else
 {
     @if (allUserFiles.Count > 0)
     {
-        <table class="table">
+        <BSTable IsBordered="true" class="table">
             <thead>
             <tr>
-                <th>ID</th>
                 <th>Имя</th>
                 <th>Фамилия</th>
+                <th>Формат</th>
+                <th>Это:</th>
+                <th>Размер</th>
+                <th>Дата создания</th>
+                <th>Дата изменения</th>
+                <th>ID</th>
+                <th>Удалить</th>
             </tr>
             </thead>
             <tbody>
-            @foreach (var user in allUserFiles)
+            @foreach (var file in allUserFiles)
             {
                 <tr>
-                    <td>@user.Id</td>
-                    <td>@user.Title</td>
-                    <td>@user.Description</td>
-                    <td>@user.Format</td>
-                    <td>@user.Size</td>
-                    <td><img src="https://localhost:5000/@user.Path" width="100px"/></td>
-                    <td>@user.CreatedAt</td>
-                    <td>@user.UpdatedAt</td>
+                    
+                    <td>@file.Title</td>
+                    <td>@file.Description</td>
+                    <td>@file.Format</td>
+                    <td>
+                        @switch (file.Format)
+                        {
+                            case "image/png":
+                                <span class="oi oi-image"></span>
+                                break;
+                            case "image/jpeg":
+                                <span class="oi oi-image"></span>
+                                break;
+                            case "image/svg+xml":
+                                <span class="oi oi-image"></span>
+                                break;
+                            case "video/mp4":
+                                <span class="oi oi-video"></span>
+                                break;
+                            case "audio/mpeg":
+                                <span class="oi oi-audio-spectrum"></span>
+                                break;
+                            case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+                                <span class="oi oi-document"></span>
+                                break;
+                            case "text/rtf":
+                                <span class="oi oi-document"></span>
+                                break;
+                            case "text/plain":
+                                <span class="oi oi-document"></span>
+                                break;
+                            default:
+                                <span class="oi oi-ban"></span>
+                                break;
+                        }
+                    </td>
+                    
+                    <td>@file.Size</td>
+                    <td>@file.CreatedAt</td>
+                    <td>@file.UpdatedAt</td>
+                    <td>@file.Id</td>
+                    <td>
+                        <BSButton Color="Color.Danger"@onclick="(() => DeleteFile(file))">
+                            <span class="oi oi-delete delete"></span>
+                        </BSButton>
+                    </td>
+                    
                 </tr>
             }
             </tbody>
-        </table>
+        </BSTable>
     }
     else
     {
         <h1>Вы еще не загрузили файлы</h1>
     }
+    
 }
 
 @code {
     private string idPars;
     private string nameParse;
     private List<File> allUserFiles;
+    private File temp;
     
     protected override async Task OnInitializedAsync()
     {
@@ -92,6 +142,29 @@ else
         
         allUserFiles = await Http.GetFromJsonAsync<List<File>>(url);
     }
+    
+    private async void DeleteFile(File file)
+    {
+       
+        try
+        {
+            var response = await Http.DeleteAsync($"{Program.apiURL}/users/" + idPars + "/files/" + file.Id).ConfigureAwait(false);
+            
+            if (response.IsSuccessStatusCode)
+            {
+                string url = $"{Program.apiURL}/users/" + idPars + "/files";
+                allUserFiles = await Http.GetFromJsonAsync<List<File>>(url);
+                StateHasChanged();
+            }
+            
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
         
     public class File
     {

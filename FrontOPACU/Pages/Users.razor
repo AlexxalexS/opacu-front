@@ -1,17 +1,35 @@
 ﻿@page "/users"
 @inject HttpClient Http
 
+<style>
+.button__link {
+    padding: 10px;
+    background: lightgray;
+    border-radius: 16px;
+ }
+ 
+ .button__add {
+     padding: 10px 20px;
+     background: #b1a9ff;
+     color: #ffffff;
+     border-radius: 12px;
+ }
+</style>
+
 <h1>Пользователи</h1>
 
 <p>Это все пользователи сервиса</p>
 
-<a class="nav-link" href="add-new-user">
-   <span class="oi oi-plus" aria-hidden="true"></span>Добавить нового ользователя
+<a class="button__add" href="add-new-user">
+    
+    <span class="oi oi-plus" aria-hidden="true"></span> Добавить нового пользователя
 </a>
 
 <br/>
 
 <hr/>
+
+
 
 @if (allUsers == null)
 {
@@ -19,33 +37,33 @@
 }
 else
 {
-    <table class="table">
+    <BSTable IsBordered="true" class="table">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Имя</th>
                 <th>Фамилия</th>
-                <th/>
-                <th/>
+                <th>ID</th>
+                <th>Файлы пользователя</th>
+                <th>Загрузить файл</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var user in allUsers)
             {
                 <tr>
-                    <td>@user.Id</td>
                     <td>@user.FirstName</td>
                     <td>@user.LastName</td>
+                    <td>@user.Id</td>
                     <td>
-                        <a href="/user-files?id=@user.Id.ToString()&name=@user.FirstName"><span class="oi oi-file"></span></a>
+                        <a class="button__link" href="/user-files?id=@user.Id.ToString()&name=@user.FirstName"><span class="oi oi-file"></span></a>
                     </td>
                     <td>
-                        <a href="/add-new-file?id=@user.Id.ToString()"><span class="oi oi-data-transfer-download"></span></a>
+                        <a class="button__link"  href="/add-new-file?id=@user.Id.ToString()"><span class="oi oi-cloud-upload"></span></a>
                     </td>
                 </tr>
             }
         </tbody>
-    </table>
+    </BSTable>
 }
 
 @code {
@@ -53,9 +71,9 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        allUsers = await Http.GetFromJsonAsync<List<User>>("https://localhost:5000/api/User");
+        allUsers = await Http.GetFromJsonAsync<List<User>>($"{Program.apiURL}/User");
     }
-
+    
     public class User
     {
         public Guid Id { get; set; }

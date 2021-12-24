@@ -8,35 +8,55 @@
 @inject ILogger<UploadFile> Logger
 
 <a href="/users">
-    <BSButton Size="Size.Small" Color="Color.Primary"><span class="oi oi-arrow-thick-left"></span>Назад</BSButton>
+    <BSButton Size="Size.Small" Color="Color.Primary"><span class="oi oi-arrow-thick-left"></span> Назад</BSButton>
 </a>
-<br>
-<h1>Upload Files</h1>
+<br/><br/>
+
+<h1>Загрузка файлов</h1>
+<br/><br/>
 
 <p>
-<EditForm Model="@newFile"  OnValidSubmit="@HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+    <BSForm Model="@newFile"  OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
 
-    <label>
-        Введите имя файла:
-        <InputText class="input-group-text" id="title" @bind-Value="newFile.Title"/>
-    </label>
-    <br/>
-    <label>
-        Введите описание файла файла:
-        <InputText class="input-group-text" id="description" @bind-Value="newFile.Description"/>
-    </label>
-    <br/>
-    <label>
-        Загрузите файл:
-        <InputFile OnChange="@OnInputFileChange" multiple/>
-    </label>
-    <br/>
-    <br/>
-    <button class="btn btn-primary" type="submit">Создать</button>
-</EditForm>
+        <BSFormGroup>
+            <BSLabel For="title">Введите имя файла:</BSLabel>
+            <BSInput Id="title" InputType="InputType.Text" @bind-Value="newFile.Title" />
+        </BSFormGroup>
+    
+
+        <BSFormGroup>
+            <BSLabel For="description">Введите описание файла файла:</BSLabel>
+            <BSInput Id="description" InputType="InputType.Text" @bind-Value="newFile.Description" />
+        </BSFormGroup>
+
+        <BSFormGroup>
+            <BSLabel For="file"> Загрузите файл:</BSLabel>
+            <InputFile id="file" OnChange="@OnInputFileChange" />
+        </BSFormGroup>
+        <BSButton Color="Color.Primary" ButtonType="ButtonType.Submit">Создать</BSButton>
+        
+        <BSButton OnClick="(() => ClearForm())" Color="Color.Primary" ButtonType="ButtonType.Reset">Сброс</BSButton>
+   
+    </BSForm>
 </p>
+
+@if (isSendOk)
+{
+    <BSAlert Color="Color.Success">
+        Фаил загружен успешно!
+    </BSAlert>  
+}
+
+@if (isSendError)
+{
+    <BSAlert Color="Color.Danger">
+       Произошла ошибко :(
+    </BSAlert>  
+}
+
+
 
 @if (files.Count > 0)
 {
@@ -46,7 +66,7 @@
                 @foreach (var file in files)
                 {
                     <li>
-                        File: @file.Name
+                        Файл: @file.Name
                         <br>
                         @if (FileUpload(uploadResults, file.Name,
                            out var result))
@@ -55,11 +75,11 @@
                                 Stored File Name: @result.StoredFileName
                             </span>
                         }
-                        else
+                        @if (@result.ErrorCode !=0)
                         {
                             <span>
-                                There was an error uploading the file
-                                (Error: @result.ErrorCode).
+                               Не загружен
+                                (Ошибка: @result.ErrorCode).
                             </span>
                         }
                     </li>
@@ -76,12 +96,13 @@
     private int maxAllowedFiles = 3;
     private bool shouldRender;
     private FileUploadModel newFile = new();
-    
     private MultipartFormDataContent content = new MultipartFormDataContent();
     private bool upload = false;
-
     protected override bool ShouldRender() => shouldRender;
 
+    private bool isSendOk = false;
+    private bool isSendError = false;
+    
     protected override async Task OnInitializedAsync()
     {
         var uri = navigationManager.ToAbsoluteUri(navigationManager.Uri);
@@ -90,6 +111,20 @@
         {
             idUser = id.First();
         }
+    }
+    
+    private void ClearForm()
+    {
+        isSendOk = false;
+        isSendError = false;
+        upload = false;
+        files.Clear();
+        uploadResults.Clear();
+        newFile = new();
+        content = new MultipartFormDataContent();
+        
+        
+        StateHasChanged();
     }
 
     private async Task OnInputFileChange(InputFileChangeEventArgs e)
@@ -140,7 +175,25 @@
 
         if (upload)
         {
-            var response = await Http.PostAsync($"{Program.apiURL}/users/" + idUser + "/files", content).ConfigureAwait(false);
+
+            try
+            {
+                var response = await Http.PostAsync($"{Program.apiURL}/users/" + idUser + "/files", content).ConfigureAwait(false);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    isSendOk = true;
+                    isSendError = false;
+                }
+                
+            }
+            catch(HttpRequestException e)
+            {
+                isSendOk = false;
+                isSendError = true;
+            }
+            
+            
         }
         
     }

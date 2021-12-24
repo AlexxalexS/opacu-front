@@ -125,7 +125,7 @@ using Microsoft.Extensions.Logging;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 72 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UploadFile.razor"
+#line 92 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/UploadFile.razor"
        
     private string idUser;
     private List<File> files = new();
@@ -133,12 +133,13 @@ using Microsoft.Extensions.Logging;
     private int maxAllowedFiles = 3;
     private bool shouldRender;
     private FileUploadModel newFile = new();
-    
     private MultipartFormDataContent content = new MultipartFormDataContent();
     private bool upload = false;
-
     protected override bool ShouldRender() => shouldRender;
 
+    private bool isSendOk = false;
+    private bool isSendError = false;
+    
     protected override async Task OnInitializedAsync()
     {
         var uri = navigationManager.ToAbsoluteUri(navigationManager.Uri);
@@ -147,6 +148,20 @@ using Microsoft.Extensions.Logging;
         {
             idUser = id.First();
         }
+    }
+    
+    private void ClearForm()
+    {
+        isSendOk = false;
+        isSendError = false;
+        upload = false;
+        files.Clear();
+        uploadResults.Clear();
+        newFile = new();
+        content = new MultipartFormDataContent();
+        
+        
+        StateHasChanged();
     }
 
     private async Task OnInputFileChange(InputFileChangeEventArgs e)
@@ -197,7 +212,25 @@ using Microsoft.Extensions.Logging;
 
         if (upload)
         {
-            var response = await Http.PostAsync($"{Program.apiURL}/users/" + idUser + "/files", content).ConfigureAwait(false);
+
+            try
+            {
+                var response = await Http.PostAsync($"{Program.apiURL}/users/" + idUser + "/files", content).ConfigureAwait(false);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    isSendOk = true;
+                    isSendError = false;
+                }
+                
+            }
+            catch(HttpRequestException e)
+            {
+                isSendOk = false;
+                isSendError = true;
+            }
+            
+            
         }
         
     }

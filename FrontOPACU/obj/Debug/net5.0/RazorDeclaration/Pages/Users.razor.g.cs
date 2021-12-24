@@ -98,15 +98,15 @@ using BlazorStrap;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 51 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/Users.razor"
+#line 69 "/Users/alexey/Projects/opacu-front/FrontOPACU/Pages/Users.razor"
        
     private List<User> allUsers;
 
     protected override async Task OnInitializedAsync()
     {
-        allUsers = await Http.GetFromJsonAsync<List<User>>("https://localhost:5000/api/User");
+        allUsers = await Http.GetFromJsonAsync<List<User>>($"{Program.apiURL}/User");
     }
-
+    
     public class User
     {
         public Guid Id { get; set; }

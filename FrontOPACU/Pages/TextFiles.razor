@@ -3,12 +3,13 @@
 @inject NavigationManager navigationManager
 @inject HttpClient Http
 
-<a href="/user-files?id=@idPars">
-    <BSButton Size="Size.Small" Color="Color.Primary"><span class="oi oi-arrow-thick-left"></span>Назад</BSButton>
+<a href="/user-files?id=@idPars&name=@nameParse">
+    <BSButton Size="Size.Small" Color="Color.Primary"><span class="oi oi-arrow-thick-left"></span> Назад</BSButton>
 </a>
-<br>
+<br><br>
 
 <h3>Файлы пользователя @nameParse</h3>
+
 
 @if (textFiles == null)
 {
@@ -18,42 +19,40 @@ else
 {
     @if (textFiles.Count > 0)
     {
-        <table class="table">
+        <BSTable IsBordered="true"  class="table">
             <thead>
             <tr>
-                <th>ID</th>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Размер</th>
                 <th>SymbolCount</th>
                 <th>Encoding</th>
-                <th/>
+                <th>ID</th>
+                <th>Скачать</th>
             </tr>
             </thead>
             <tbody>
-            @foreach (var sound in textFiles)
+            @foreach (var file in textFiles)
             {
-       
-                <audio id="sound+@sound.Id" src="https://localhost:5000/@sound.File.Path" />
-
                 <tr>
-                    <td>@sound.Id</td>
-                    <td>@sound.SymbolCount</td>
-                    <td>@sound.Encoding</td>
-                    <td>@sound.File.Title</td>
-                    <td>@sound.File.Description</td>
-                    <td>@sound.File.Size</td>
+                    <td>@file.File.Title</td>
+                    <td>@file.File.Description</td>
+                    <td>@file.File.Size</td>
+                    <td>@file.SymbolCount</td>
+                    <td>@file.Encoding</td>
+                    <td>@file.Id</td>
                     <td>
-                        <button style="background: none; outline: none; border: none" onclick="document.getElementById('sound+@sound.Id').play()"><span class="oi oi-media-play"></span></button>
+                        <a style="text-decoration: none" href="https://localhost:5000/@file.File.Path" target="_blank">
+                            <span class="oi oi-cloud-download"></span>
+                        </a>
                     </td>
-                    <td>
-                        <button style="background: none; outline: none; border: none" onclick="document.getElementById('sound+@sound.Id').pause()"><span class="oi oi-media-pause"></span></button>
-                    </td>
-            
                 </tr>
             }
             </tbody>
-        </table>
-    }
+        </BSTable>
+    } else
     {
-        <h1>Вы еще не загрузили файлы</h1>
+        <h1>Вы еще не загрузили документы</h1>
     }
 }
 
