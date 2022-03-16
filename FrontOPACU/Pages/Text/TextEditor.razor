@@ -1,0 +1,109 @@
+﻿@page "/text"
+@using Blazored.TextEditor
+
+<a href="/">
+    <BSButton Size="Size.Small" Color="Color.Primary"><span class="oi oi-arrow-thick-left"></span> Назад</BSButton>
+</a>
+<br>
+<br>
+
+<h3>Добавить заметку</h3>
+
+<BlazoredTextEditor @ref="@QuillHtml">
+    <ToolbarContent>
+        <select class="ql-header">
+            <option selected=""></option>
+            <option value="1"></option>
+            <option value="2"></option>
+            <option value="3"></option>
+            <option value="4"></option>
+            <option value="5"></option>
+        </select>
+        <span class="ql-formats">
+            <select class="ql-font">
+                <option selected=""></option>
+                <option value="serif"></option>
+                <option value="monospace"></option>
+            </select>
+            <select class="ql-size">
+                <option value="small"></option>
+                <option selected=""></option>
+                <option value="large"></option>
+                <option value="huge"></option>
+            </select>
+        </span>
+        <span class="ql-formats">
+            <button class="ql-bold"></button>
+            <button class="ql-italic"></button>
+            <button class="ql-underline"></button>
+            <button class="ql-strike"></button>
+        </span>
+        <span class="ql-formats">
+            <select class="ql-color"></select>
+            <select class="ql-background"></select>
+        </span>
+        <span class="ql-formats">
+            <button class="ql-list" value="ordered"></button>
+            <button class="ql-list" value="bullet"></button>
+            <button class="ql-indent" value="-1"></button>
+            <button class="ql-indent" value="+1"></button>
+            <select class="ql-align">
+                <option selected=""></option>
+                <option value="center"></option>
+                <option value="right"></option>
+                <option value="justify"></option>
+            </select>
+        </span>
+        <span class="ql-formats">
+            <button class="ql-link"></button>
+        </span>
+    </ToolbarContent>
+    <EditorContent>
+        <h3>Тут вы можете ввести и отредактировать любой текст</h3><br />
+        <h4>Само время потыкать :)</h4>
+        <a href="http://sut.ru/">
+            БОНЧ!
+        </a>
+    </EditorContent>
+</BlazoredTextEditor>
+<br />
+<button class="btn btn-primary"
+        @onclick="GetHTML">
+    Get HTML
+</button>
+<button class="btn btn-primary"
+        @onclick="SetHTML">
+    Set HTML
+</button>
+<br />
+<div>
+    <br />
+    @((MarkupString)QuillHTMLContent)
+    @QuillHTMLContent
+</div>
+<br />
+
+@code {
+
+    BlazoredTextEditor QuillHtml;
+    string QuillHTMLContent;
+
+    public async void GetHTML()
+    {
+        QuillHTMLContent = await this.QuillHtml.GetHTML();
+        StateHasChanged();
+    }
+
+    public async void SetHTML()
+    {
+        @*string QuillContent =
+            @"<a href='http://BlazorHelpWebsite.com/'>" +
+            "<img src='images/BlazorHelpWebsite.gif' /></a>";*@
+    string QuillContent =
+            @"<a href='https://vk.com/alex_98'>" +
+            "<img src='https://sun9-81.userapi.com/impf/5bGxcr1i52-NXgJ0XAiqMwlI8iQQGogXL93DQA/HLd3g6oGwyU.jpg?size=1440x2160&quality=96&sign=82e31dc387ef2fc60ebaf391440f8b58&type=album' /></a>";
+
+    await this.QuillHtml.LoadHTMLContent(QuillContent);
+    StateHasChanged();
+}
+}

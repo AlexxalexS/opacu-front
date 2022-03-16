@@ -1,5 +1,7 @@
 ﻿<StaticWebAssets Version="1.0">
-  <ContentRoot BasePath="_content/BlazorStrap" Path="/Users/alexey/.nuget/packages/blazorstrap/1.5.101-preview-6/build/../staticwebassets/" />
-  <ContentRoot BasePath="/" Path="/Users/alexey/Projects/opacu-front/FrontOPACU/bin/Debug/net5.0/wwwroot/" />
-  <ContentRoot BasePath="/" Path="/Users/alexey/Projects/opacu-front/FrontOPACU/obj/Debug/net5.0/scopedcss/bundle/" />
+  <ContentRoot BasePath="/" Path="/Users/leha/projects/my/opacu-front/FrontOPACU/bin/Debug/net5.0/wwwroot/" />
+  <ContentRoot BasePath="/" Path="/Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/scopedcss/bundle/" />
+  <ContentRoot BasePath="_content/Blazored.TextEditor" Path="/Users/leha/.nuget/packages/blazored.texteditor/1.0.7/build/../staticwebassets/" />
+  <ContentRoot BasePath="_content/BlazorStrap" Path="/Users/leha/.nuget/packages/blazorstrap/1.5.101-preview-6/build/../staticwebassets/" />
+  <ContentRoot BasePath="_content/WYSIWYGTextEditor" Path="/Users/leha/.nuget/packages/wysiwygtexteditor/1.0.1/build/../staticwebassets/" />
 </StaticWebAssets>

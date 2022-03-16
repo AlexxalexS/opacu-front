@@ -14,6 +14,25 @@
           "lib/netstandard2.0/BlazorComponentUtilities.dll": {}
         }
       },
+      "Blazored.TextEditor/1.0.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.0",
+          "Microsoft.AspNetCore.Components.Web": "3.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Blazored.TextEditor.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Blazored.TextEditor.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazored.TextEditor.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazored.TextEditor.props": {}
+        }
+      },
       "Blazored.Video/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -430,6 +449,25 @@
         "runtime": {
           "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
         }
+      },
+      "WYSIWYGTextEditor/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.0",
+          "Microsoft.AspNetCore.Components.Web": "3.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/WYSIWYGTextEditor.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/WYSIWYGTextEditor.dll": {}
+        },
+        "build": {
+          "buildTransitive/WYSIWYGTextEditor.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/WYSIWYGTextEditor.props": {}
+        }
       }
     },
     "net5.0/browser-wasm": {
@@ -443,6 +481,25 @@
         },
         "runtime": {
           "lib/netstandard2.0/BlazorComponentUtilities.dll": {}
+        }
+      },
+      "Blazored.TextEditor/1.0.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.0",
+          "Microsoft.AspNetCore.Components.Web": "3.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Blazored.TextEditor.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Blazored.TextEditor.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazored.TextEditor.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazored.TextEditor.props": {}
         }
       },
       "Blazored.Video/1.0.0": {
@@ -884,6 +941,25 @@
         "runtime": {
           "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
         }
+      },
+      "WYSIWYGTextEditor/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.0",
+          "Microsoft.AspNetCore.Components.Web": "3.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/WYSIWYGTextEditor.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/WYSIWYGTextEditor.dll": {}
+        },
+        "build": {
+          "buildTransitive/WYSIWYGTextEditor.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/WYSIWYGTextEditor.props": {}
+        }
       }
     }
   },
@@ -900,6 +976,24 @@
         "blazorcomponentutilities.1.6.0.nupkg.sha512",
         "blazorcomponentutilities.nuspec",
         "lib/netstandard2.0/BlazorComponentUtilities.dll"
+      ]
+    },
+    "Blazored.TextEditor/1.0.7": {
+      "sha512": "hrDf9qVuBZz4v5wcu8QEb7CWIlEHNuvjnjzjvqs4sLFiuE3/eOr0bUo8fvPwTMVuZeouycnxuEvPkKJ7sfVlFA==",
+      "type": "package",
+      "path": "blazored.texteditor/1.0.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "blazored.texteditor.1.0.7.nupkg.sha512",
+        "blazored.texteditor.nuspec",
+        "build/Blazored.TextEditor.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazored.TextEditor.props",
+        "buildTransitive/Blazored.TextEditor.props",
+        "lib/netstandard2.0/Blazored.TextEditor.dll",
+        "staticwebassets/Blazored-BlazorQuill.js",
+        "staticwebassets/quill-blot-formatter.min.js"
       ]
     },
     "Blazored.Video/1.0.0": {
@@ -1722,33 +1816,54 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "WYSIWYGTextEditor/1.0.1": {
+      "sha512": "WwTSBMljlvEBTSzFzwKsVlILaELso4Qz+B+7RAW95bSu6W6TsGB0i2m33sQ5z0zLIxqHELKmE8/2MRSIhbodHQ==",
+      "type": "package",
+      "path": "wysiwygtexteditor/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "build/WYSIWYGTextEditor.props",
+        "buildMultiTargeting/WYSIWYGTextEditor.props",
+        "buildTransitive/WYSIWYGTextEditor.props",
+        "lib/netstandard2.0/WYSIWYGTextEditor.dll",
+        "staticwebassets/BlazorQuill.js",
+        "staticwebassets/QuillLogo.png",
+        "staticwebassets/quill-blot-formatter.min.js",
+        "wysiwygtexteditor.1.0.1.nupkg.sha512",
+        "wysiwygtexteditor.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "BlazorStrap >= 1.5.101-Preview-6",
+      "Blazored.TextEditor >= 1.0.7",
       "Blazored.Video >= 1.0.0",
       "Microsoft.AspNetCore.Components.WebAssembly >= 5.0.11",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 5.0.11",
       "Microsoft.AspNetCore.WebUtilities >= 2.2.0",
       "Newtonsoft.Json >= 13.0.1",
-      "System.Net.Http.Json >= 5.0.0"
+      "System.Net.Http.Json >= 5.0.0",
+      "WYSIWYGTextEditor >= 1.0.1"
     ]
   },
   "packageFolders": {
-    "/Users/alexey/.nuget/packages/": {}
+    "/Users/leha/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/alexey/Projects/opacu-front/FrontOPACU/FrontOPACU.csproj",
+      "projectUniqueName": "/Users/leha/projects/my/opacu-front/FrontOPACU/FrontOPACU.csproj",
       "projectName": "FrontOPACU",
-      "projectPath": "/Users/alexey/Projects/opacu-front/FrontOPACU/FrontOPACU.csproj",
-      "packagesPath": "/Users/alexey/.nuget/packages/",
-      "outputPath": "/Users/alexey/Projects/opacu-front/FrontOPACU/obj/",
+      "projectPath": "/Users/leha/projects/my/opacu-front/FrontOPACU/FrontOPACU.csproj",
+      "packagesPath": "/Users/leha/.nuget/packages/",
+      "outputPath": "/Users/leha/projects/my/opacu-front/FrontOPACU/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/alexey/.nuget/NuGet/NuGet.Config"
+        "/Users/leha/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -1776,6 +1891,10 @@
             "target": "Package",
             "version": "[1.5.101-Preview-6, )"
           },
+          "Blazored.TextEditor": {
+            "target": "Package",
+            "version": "[1.0.7, )"
+          },
           "Blazored.Video": {
             "target": "Package",
             "version": "[1.0.0, )"
@@ -1800,6 +1919,10 @@
           "System.Net.Http.Json": {
             "target": "Package",
             "version": "[5.0.0, )"
+          },
+          "WYSIWYGTextEditor": {
+            "target": "Package",
+            "version": "[1.0.1, )"
           }
         },
         "imports": [
@@ -1815,7 +1938,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.NETCore.App.Runtime.browser-wasm",
-            "version": "[5.0.11, 5.0.11]"
+            "version": "[5.0.15, 5.0.15]"
           }
         ],
         "frameworkReferences": {
@@ -1823,7 +1946,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.402/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.103/RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

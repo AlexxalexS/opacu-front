@@ -12,6 +12,16 @@
     <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+    <PackageReference Include="Blazored.TextEditor" Version="1.0.7" />
+    <PackageReference Include="WYSIWYGTextEditor" Version="1.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Pages\Text\" />
+    <None Remove="Blazored.TextEditor" />
+    <None Remove="WYSIWYGTextEditor" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\Text\" />
+  </ItemGroup>
 </Project>

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/alexey/Projects/opacu-front/FrontOPACU/FrontOPACU.csproj": {}
+    "/Users/leha/projects/my/opacu-front/FrontOPACU/FrontOPACU.csproj": {}
   },
   "projects": {
-    "/Users/alexey/Projects/opacu-front/FrontOPACU/FrontOPACU.csproj": {
+    "/Users/leha/projects/my/opacu-front/FrontOPACU/FrontOPACU.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/alexey/Projects/opacu-front/FrontOPACU/FrontOPACU.csproj",
+        "projectUniqueName": "/Users/leha/projects/my/opacu-front/FrontOPACU/FrontOPACU.csproj",
         "projectName": "FrontOPACU",
-        "projectPath": "/Users/alexey/Projects/opacu-front/FrontOPACU/FrontOPACU.csproj",
-        "packagesPath": "/Users/alexey/.nuget/packages/",
-        "outputPath": "/Users/alexey/Projects/opacu-front/FrontOPACU/obj/",
+        "projectPath": "/Users/leha/projects/my/opacu-front/FrontOPACU/FrontOPACU.csproj",
+        "packagesPath": "/Users/leha/.nuget/packages/",
+        "outputPath": "/Users/leha/projects/my/opacu-front/FrontOPACU/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/alexey/.nuget/NuGet/NuGet.Config"
+          "/Users/leha/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -42,6 +42,10 @@
               "target": "Package",
               "version": "[1.5.101-Preview-6, )"
             },
+            "Blazored.TextEditor": {
+              "target": "Package",
+              "version": "[1.0.7, )"
+            },
             "Blazored.Video": {
               "target": "Package",
               "version": "[1.0.0, )"
@@ -66,6 +70,10 @@
             "System.Net.Http.Json": {
               "target": "Package",
               "version": "[5.0.0, )"
+            },
+            "WYSIWYGTextEditor": {
+              "target": "Package",
+              "version": "[1.0.1, )"
             }
           },
           "imports": [
@@ -81,7 +89,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.browser-wasm",
-              "version": "[5.0.11, 5.0.11]"
+              "version": "[5.0.15, 5.0.15]"
             }
           ],
           "frameworkReferences": {
@@ -89,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.402/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.103/RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
