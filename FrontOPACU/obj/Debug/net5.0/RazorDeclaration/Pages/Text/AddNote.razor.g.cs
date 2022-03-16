@@ -97,28 +97,28 @@ using WYSIWYGTextEditor;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "/Users/leha/projects/my/opacu-front/FrontOPACU/Pages/Text/TextEditor.razor"
+#line 2 "/Users/leha/projects/my/opacu-front/FrontOPACU/Pages/Text/AddNote.razor"
 using Blazored.TextEditor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "/Users/leha/projects/my/opacu-front/FrontOPACU/Pages/Text/TextEditor.razor"
+#line 3 "/Users/leha/projects/my/opacu-front/FrontOPACU/Pages/Text/AddNote.razor"
 using System.Text;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "/Users/leha/projects/my/opacu-front/FrontOPACU/Pages/Text/TextEditor.razor"
+#line 5 "/Users/leha/projects/my/opacu-front/FrontOPACU/Pages/Text/AddNote.razor"
 using Newtonsoft.Json;
 
 #line default
 #line hidden
 #nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/add-note")]
-    public partial class TextEditor : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class AddNote : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -126,7 +126,7 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 98 "/Users/leha/projects/my/opacu-front/FrontOPACU/Pages/Text/TextEditor.razor"
+#line 102 "/Users/leha/projects/my/opacu-front/FrontOPACU/Pages/Text/AddNote.razor"
        
 
     BlazoredTextEditor QuillHtml;
@@ -146,7 +146,7 @@ using Newtonsoft.Json;
 #line hidden
 #nullable disable
 #nullable restore
-#line 113 "/Users/leha/projects/my/opacu-front/FrontOPACU/Pages/Text/TextEditor.razor"
+#line 117 "/Users/leha/projects/my/opacu-front/FrontOPACU/Pages/Text/AddNote.razor"
                                                                
     string QuillContent =
             @"<a href='https://vk.com/alex_98'>" +
@@ -166,7 +166,7 @@ private async Task CreateNote()
     newNote.Content = content;
     var serialized = JsonConvert.SerializeObject(newNote);
     var stringContent = new StringContent(serialized, Encoding.UTF8, "application/json");
-    var result = await Http.PostAsync($"{Program.apiURL}/Note", stringContent).ConfigureAwait(false);
+    var result = await Http.PostAsync($"{Program.apiURL}/note", stringContent).ConfigureAwait(false);
 
     try
     {

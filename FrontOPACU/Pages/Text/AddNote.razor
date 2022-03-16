@@ -14,7 +14,11 @@
 
 @if (isCreate)
 {
-    <h1 class="alert-success">Заметка создана</h1>
+    <h1 class="alert-success">Заметка создана
+    <a href="/notes">
+        <BSButton Size="Size.Small" Color="Color.Primary">Посмотреть</BSButton>
+    </a>
+    </h1>
 }
 
 <BlazoredTextEditor @ref="@QuillHtml">
@@ -129,7 +133,7 @@ private async Task CreateNote()
     newNote.Content = content;
     var serialized = JsonConvert.SerializeObject(newNote);
     var stringContent = new StringContent(serialized, Encoding.UTF8, "application/json");
-    var result = await Http.PostAsync($"{Program.apiURL}/Note", stringContent).ConfigureAwait(false);
+    var result = await Http.PostAsync($"{Program.apiURL}/note", stringContent).ConfigureAwait(false);
 
     try
     {

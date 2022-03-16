@@ -2365,7 +2365,8 @@
 /Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/RazorDeclaration/Pages/ImagesFiles.razor.g.cs
 /Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs
 /Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/RazorDeclaration/Pages/MusicFiles.razor.g.cs
-/Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/RazorDeclaration/Pages/Text/TextEditor.razor.g.cs
+/Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/RazorDeclaration/Pages/Text/AddNote.razor.g.cs
+/Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/RazorDeclaration/Pages/Text/Notes.razor.g.cs
 /Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/RazorDeclaration/Pages/TextFiles.razor.g.cs
 /Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/RazorDeclaration/Pages/UploadFile.razor.g.cs
 /Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/RazorDeclaration/Pages/UserFiles.razor.g.cs
@@ -2386,7 +2387,8 @@
 /Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/Razor/Pages/ImagesFiles.razor.g.cs
 /Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs
 /Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/Razor/Pages/MusicFiles.razor.g.cs
-/Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/Razor/Pages/Text/TextEditor.razor.g.cs
+/Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/Razor/Pages/Text/AddNote.razor.g.cs
+/Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/Razor/Pages/Text/Notes.razor.g.cs
 /Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/Razor/Pages/TextFiles.razor.g.cs
 /Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/Razor/Pages/UploadFile.razor.g.cs
 /Users/leha/projects/my/opacu-front/FrontOPACU/obj/Debug/net5.0/Razor/Pages/UserFiles.razor.g.cs

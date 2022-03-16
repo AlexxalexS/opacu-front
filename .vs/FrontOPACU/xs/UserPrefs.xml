@@ -1,11 +1,10 @@
 ﻿<Properties StartupConfiguration="{18E7CBF6-2863-4274-89AA-5C10487A00F6}|Default">
   <MonoDevelop.Ide.ItemProperties.FrontOPACU PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FrontOPACU/Pages/Text/TextEditor.razor">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FrontOPACU/Pages/Text/Notes.razor">
     <Files>
-      <File FileName="FrontOPACU/Pages/Text/Index.razor" Line="1" Column="17" />
-      <File FileName="FrontOPACU/Pages/AddNewUser.razor" Line="1" Column="21" />
-      <File FileName="FrontOPACU/Shared/NavMenu.razor" Line="32" Column="82" />
-      <File FileName="FrontOPACU/Pages/Users.razor" Line="25" Column="56" />
+      <File FileName="FrontOPACU/Pages/Text/Index.razor" Line="123" Column="23" />
+      <File FileName="FrontOPACU/Shared/NavMenu.razor" Line="1" Column="46" />
+      <File FileName="FrontOPACU/Pages/Text/Notes.razor" Line="93" Column="52" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -19,7 +18,7 @@
               </Node>
               <Node name="Pages" expanded="True">
                 <Node name="Text" expanded="True">
-                  <Node name="TextEditor.razor" selected="True" />
+                  <Node name="Notes.razor" selected="True" />
                 </Node>
               </Node>
               <Node name="Properties" expanded="True" />

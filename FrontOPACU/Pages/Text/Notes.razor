@@ -1,0 +1,104 @@
+﻿@page "/notes"
+@inject HttpClient Http
+@using Blazored.TextEditor
+
+<h1>Заметки</h1>
+
+<p>Это все заметки сервиса</p>
+
+<a class="button__add" href="add-note">
+
+    <span class="oi oi-plus" aria-hidden="true"></span> Добавить новую заметку
+</a>
+<br />
+<hr />
+
+@if (allNotes == null)
+{
+    <p><em>Загрузка...</em></p>
+}
+else
+{
+    <BSTable IsBordered="true" class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Заметка</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var note in allNotes)
+            {
+                <tr>
+                    <td>@note.Id</td>
+                    <td>
+                        <BlazoredTextEditor @ref="@QuillReadOnly"
+                                            ReadOnly="true"
+                                            Theme="bubble"
+                                            DebugLevel="log">
+                            <ToolbarContent>
+                                <select class="ql-header">
+                                    <option selected=""></option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                    <option value="4"></option>
+                                    <option value="5"></option>
+                                </select>
+                                <span class="ql-formats">
+                                    <button class="ql-bold"></button>
+                                    <button class="ql-italic"></button>
+                                    <button class="ql-underline"></button>
+                                    <button class="ql-strike"></button>
+                                </span>
+                                <span class="ql-formats">
+                                    <select class="ql-color"></select>
+                                    <select class="ql-background"></select>
+                                </span>
+                                <span class="ql-formats">
+                                    <button class="ql-list" value="ordered"></button>
+                                    <button class="ql-list" value="bullet"></button>
+                                </span>
+                                <span class="ql-formats">
+                                    <button class="ql-link"></button>
+                                </span>
+                            </ToolbarContent>
+                            <EditorContent>
+                                @FormattedNote(note)
+                                @*@((MarkupString)@QuillReadOnlyContent)*@
+                               
+                            </EditorContent>
+                        </BlazoredTextEditor>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </BSTable>
+}
+
+@code {
+    private List<Note> allNotes;
+    BlazoredTextEditor QuillReadOnly;
+    string QuillReadOnlyContent =
+        @"<span><b>Read Only</b> <u>Content</u></span>";
+
+    protected override async Task OnInitializedAsync()
+    {
+        allNotes = await Http.GetFromJsonAsync<List<Note>>($"{Program.apiURL}/note");
+    }
+
+    private async Task FormattedNote(Note Note)
+    {
+        var QuillContent = Note.Content;
+        await this.QuillReadOnly.LoadHTMLContent(QuillContent);
+        StateHasChanged();
+    }
+
+public class Note
+{
+    public Guid Id { get; set; }
+    public string Content { get; set; }
+}
+
+
+}
