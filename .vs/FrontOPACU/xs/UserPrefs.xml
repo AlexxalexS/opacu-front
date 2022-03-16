@@ -2,17 +2,10 @@
   <MonoDevelop.Ide.ItemProperties.FrontOPACU PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workbench ActiveDocument="FrontOPACU/Pages/Text/TextEditor.razor">
     <Files>
-      <File FileName="FrontOPACU/Shared/NavMenu.razor" Line="28" Column="24" />
-      <File FileName="FrontOPACU/Pages/Text/Index.razor" Line="23" Column="37" />
-      <File FileName="FrontOPACU/Pages/Users.razor" Line="1" Column="14" />
-      <File FileName="FrontOPACU/Pages/MusicFiles.razor" Line="22" Column="13" />
-      <File FileName="FrontOPACU/_Imports.razor" Line="13" Column="25" />
-      <File FileName="FrontOPACU/App.razor" Line="1" Column="1" />
-      <File FileName="FrontOPACU/Program.cs" Line="1" Column="1" />
-      <File FileName="FrontOPACU/wwwroot/index.html" Line="36" Column="81" />
-      <File FileName="FrontOPACU/wwwroot/css/app.css" Line="1" Column="1" />
-      <File FileName="FrontOPACU/Pages/Index.razor" Line="1" Column="1" />
-      <File FileName="FrontOPACU/Pages/UploadFile.razor" Line="7" Column="13" />
+      <File FileName="FrontOPACU/Pages/Text/Index.razor" Line="1" Column="17" />
+      <File FileName="FrontOPACU/Pages/AddNewUser.razor" Line="1" Column="21" />
+      <File FileName="FrontOPACU/Shared/NavMenu.razor" Line="32" Column="82" />
+      <File FileName="FrontOPACU/Pages/Users.razor" Line="25" Column="56" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

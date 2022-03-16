@@ -1,5 +1,8 @@
-﻿@page "/text"
+﻿@page "/add-note"
 @using Blazored.TextEditor
+@using System.Text
+@inject HttpClient Http
+@using Newtonsoft.Json;
 
 <a href="/">
     <BSButton Size="Size.Small" Color="Color.Primary"><span class="oi oi-arrow-thick-left"></span> Назад</BSButton>
@@ -8,6 +11,11 @@
 <br>
 
 <h3>Добавить заметку</h3>
+
+@if (isCreate)
+{
+    <h1 class="alert-success">Заметка создана</h1>
+}
 
 <BlazoredTextEditor @ref="@QuillHtml">
     <ToolbarContent>
@@ -67,13 +75,17 @@
     </EditorContent>
 </BlazoredTextEditor>
 <br />
-<button class="btn btn-primary"
+@*<button class="btn btn-primary"
         @onclick="GetHTML">
     Get HTML
 </button>
 <button class="btn btn-primary"
         @onclick="SetHTML">
     Set HTML
+</button>*@
+<button class="btn btn-primary"
+        @onclick="CreateNote">
+    Создать
 </button>
 <br />
 <div>
@@ -105,5 +117,36 @@
 
     await this.QuillHtml.LoadHTMLContent(QuillContent);
     StateHasChanged();
+}
+
+
+private NewNote newNote = new();
+private Boolean isCreate = false;
+
+private async Task CreateNote()
+{
+    var content = await this.QuillHtml.GetHTML();
+    newNote.Content = content;
+    var serialized = JsonConvert.SerializeObject(newNote);
+    var stringContent = new StringContent(serialized, Encoding.UTF8, "application/json");
+    var result = await Http.PostAsync($"{Program.apiURL}/Note", stringContent).ConfigureAwait(false);
+
+    try
+    {
+        isCreate = true;
+        newNote = new();
+        string QuillContent = "";
+        await this.QuillHtml.LoadHTMLContent(QuillContent);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e);
+    }
+    StateHasChanged();
+}
+
+private class NewNote
+{
+    public string Content { get; set; }
 }
 }

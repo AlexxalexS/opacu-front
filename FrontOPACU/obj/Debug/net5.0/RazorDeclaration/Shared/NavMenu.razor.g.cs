@@ -111,7 +111,7 @@ using WYSIWYGTextEditor;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 35 "/Users/leha/projects/my/opacu-front/FrontOPACU/Shared/NavMenu.razor"
+#line 40 "/Users/leha/projects/my/opacu-front/FrontOPACU/Shared/NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

@@ -203,13 +203,13 @@
       "mscorlib.dll": "sha256-CbcIR45\/xUFaZJqGIle6bb7v2kWYjp4kOFpKNnCkd4I=",
       "netstandard.dll": "sha256-qE0Q70OyVlHYY\/Y3nwMjfh+zissea9uhfvWMvPWfI7w=",
       "System.Private.CoreLib.dll": "sha256-pdkcl2+OojCfrhxX5eFmKI30wAmhL6s+sCLp7s175k0=",
-      "FrontOPACU.dll": "sha256-M7sGeB0ly0mMOs+MZ\/7+XVnbmy1QL4L9qSyW19AcIJg="
+      "FrontOPACU.dll": "sha256-k20SomMxQgUXXCku3mbF34xGDJzxOefxR8R9tkggpkA="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "FrontOPACU.pdb": "sha256-SRP\/4wJHd4F39ycc3Y4Z3+wreONHTDo9V\/Z3is67TuM="
+      "FrontOPACU.pdb": "sha256-OObpSploGuz1thyLoWkWL5i3LKFYwEJ93\/6k7szicKY="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-ootDKSA6cNAbgJLmPhrHsPVvVqkGEYdRZxucC22LWjw=",

@@ -103,7 +103,21 @@ using Blazored.TextEditor;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/text")]
+#nullable restore
+#line 3 "/Users/leha/projects/my/opacu-front/FrontOPACU/Pages/Text/TextEditor.razor"
+using System.Text;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "/Users/leha/projects/my/opacu-front/FrontOPACU/Pages/Text/TextEditor.razor"
+using Newtonsoft.Json;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/add-note")]
     public partial class TextEditor : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -112,7 +126,7 @@ using Blazored.TextEditor;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 86 "/Users/leha/projects/my/opacu-front/FrontOPACU/Pages/Text/TextEditor.razor"
+#line 98 "/Users/leha/projects/my/opacu-front/FrontOPACU/Pages/Text/TextEditor.razor"
        
 
     BlazoredTextEditor QuillHtml;
@@ -132,7 +146,7 @@ using Blazored.TextEditor;
 #line hidden
 #nullable disable
 #nullable restore
-#line 101 "/Users/leha/projects/my/opacu-front/FrontOPACU/Pages/Text/TextEditor.razor"
+#line 113 "/Users/leha/projects/my/opacu-front/FrontOPACU/Pages/Text/TextEditor.razor"
                                                                
     string QuillContent =
             @"<a href='https://vk.com/alex_98'>" +
@@ -142,9 +156,41 @@ using Blazored.TextEditor;
     StateHasChanged();
 }
 
+
+private NewNote newNote = new();
+private Boolean isCreate = false;
+
+private async Task CreateNote()
+{
+    var content = await this.QuillHtml.GetHTML();
+    newNote.Content = content;
+    var serialized = JsonConvert.SerializeObject(newNote);
+    var stringContent = new StringContent(serialized, Encoding.UTF8, "application/json");
+    var result = await Http.PostAsync($"{Program.apiURL}/Note", stringContent).ConfigureAwait(false);
+
+    try
+    {
+        isCreate = true;
+        newNote = new();
+        string QuillContent = "";
+        await this.QuillHtml.LoadHTMLContent(QuillContent);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e);
+    }
+    StateHasChanged();
+}
+
+private class NewNote
+{
+    public string Content { get; set; }
+}
+
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }
 #pragma warning restore 1591
