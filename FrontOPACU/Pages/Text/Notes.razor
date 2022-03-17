@@ -64,9 +64,7 @@ else
                                 </span>
                             </ToolbarContent>
                             <EditorContent>
-                                @FormattedNote(note)
-                                @*@((MarkupString)@QuillReadOnlyContent)*@
-                               
+                                @((MarkupString)@note.Content)
                             </EditorContent>
                         </BlazoredTextEditor>
                     </td>
